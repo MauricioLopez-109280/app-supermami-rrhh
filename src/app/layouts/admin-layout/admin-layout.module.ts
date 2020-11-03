@@ -8,15 +8,21 @@ import { UserProfileComponent } from '../../user-profile/user-profile.component'
 import { TableListComponent } from '../../table-list/table-list.component';
 import { TypographyComponent } from '../../typography/typography.component';
 import { IconsComponent } from '../../icons/icons.component';
-// import { MapsComponent } from '../../maps/maps.component';
+
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
+
+//angular matirial
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
-import {MatRippleModule} from '@angular/material/core';
+import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+
 
 //easy components
 import { RrhhEmpleadosComponent } from '../../rrhh-empleados/rrhh-empleados.component';
@@ -26,6 +32,8 @@ import { RrhhCapacitacionComponent } from '../../rrhh-capacitacion/rrhh-capacita
 import { RrhhPerformanceComponent } from '../../rrhh-performance/rrhh-performance.component';
 import { RrhhReportesComponent } from '../../rrhh-reportes/rrhh-reportes.component';
 import { GridgralComponent } from 'app/gridgral/gridgral.component';
+import { FormgenericoComponent } from 'app/formgenerico/formgenerico.component';
+
 
 @NgModule({
   imports: [
@@ -39,6 +47,11 @@ import { GridgralComponent } from 'app/gridgral/gridgral.component';
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
+    MatCheckboxModule,
+    MatGridListModule,
+
+    MatDatepickerModule,MatNativeDateModule
+
   ],
   declarations: [
     DashboardComponent,
@@ -46,7 +59,6 @@ import { GridgralComponent } from 'app/gridgral/gridgral.component';
     TableListComponent,
     // TypographyComponent,
     // IconsComponent,
-    // MapsComponent,
     NotificationsComponent,
     // UpgradeComponent,
 
@@ -58,7 +70,7 @@ import { GridgralComponent } from 'app/gridgral/gridgral.component';
     RrhhReportesComponent,
 
     GridgralComponent,
-    
+    FormgenericoComponent
   ]
 })
 

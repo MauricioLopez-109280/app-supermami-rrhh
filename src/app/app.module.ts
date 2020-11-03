@@ -19,7 +19,6 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { TableListComponent } from './table-list/table-list.component';
 import { TypographyComponent } from './typography/typography.component';
 import { IconsComponent } from './icons/icons.component';
-import { MapsComponent } from './maps/maps.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { UpgradeComponent } from './upgrade/upgrade.component';
 */
@@ -27,13 +26,6 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 
 import { ToastrModule } from 'ngx-toastr';
 
-
-//easy components
-// import { RrhhLicenciasComponent } from './rrhh-licencias/rrhh-licencias.component';
-// import { RrhhPresentismoComponent } from './rrhh-presentismo/rrhh-presentismo.component';
-// import { RrhhPerformanceComponent } from './rrhh-performance/rrhh-performance.component';
-// import { RrhhCapacitacionComponent } from './rrhh-capacitacion/rrhh-capacitacion.component';
-// import { RrhhReportesComponent } from './rrhh-reportes/rrhh-reportes.component';
 
 
 @NgModule({
@@ -48,15 +40,10 @@ import { ToastrModule } from 'ngx-toastr';
     RouterModule,
     AppRoutingModule,
     ToastrModule.forRoot()
-    // AgmCoreModule.forRoot({
-    //   apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
-    // })
   ],
   declarations: [
     AppComponent,
-    AdminLayoutComponent,
-    
-
+    AdminLayoutComponent, 
 
   ],
   providers: [],

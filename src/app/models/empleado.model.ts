@@ -2,30 +2,50 @@
 export class EmpleadoModel {
 
     id:string;
-    nombre: string;
     apellido: string;
+    nombre: string;
+    dni:number;
+    cuit:number;
+    nacimiento:number;
     email:string;
     legajo: number;
-    curso: string;
+    nacionalidad:string;
+    domicilio:string;
     imagen: string;
     activo: boolean;
 
-    constructor(apellido: string = '', nombre: string = '',email:string='', legajo: number = 0, imagen:string='', curso:string='2W2'){
-        this.id = null;
-        this.nombre = nombre;
+    constructor(
+        apellido: string = '', 
+        nombre: string = '',
+        dni:number = 0,
+        cuit:number = 0,
+        nacimiento:number = 0,
+        email:string = '', 
+        legajo: number = 0, 
+        nacionalidad:string = '',
+        domicilio:string = '',
+        imagen:string = '', 
+        activo:boolean = true
+    ){
+        this.id = '';
         this.apellido = apellido;
+        this.nombre = nombre;
+        this.dni = dni;
+        this.cuit = cuit;
+        this.nacimiento = nacimiento;
         this.email = email;
         this.legajo = legajo;
-        this.curso = curso;
+        this.nacionalidad = nacionalidad;
+        this.domicilio = domicilio;
         this.imagen = imagen;
-        this.activo = true;
+        this.activo = activo;
     }
 
-    public getFullName():string{
-        return `${this.curso} - ${this.legajo} -  ${this.apellido}, ${this.nombre}`;
+    getFullName():string{
+        return `${this.cuit} -  ${this.apellido}, ${this.nombre}`;
     }
 
-    public getEstado():string{
+    getEstado():string{
         return this.activo ? 'ACTIVO' : 'BAJA';
     }
 

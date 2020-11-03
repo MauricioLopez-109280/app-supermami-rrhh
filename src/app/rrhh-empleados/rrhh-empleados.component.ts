@@ -17,6 +17,18 @@ export enum EnumTipoDiv {
 }
 
 
+interface IProperties {
+    key:string;
+    type:string;
+}
+
+interface IFormulario {
+    key:string;
+    type:string;
+    comboValues:string[]
+}
+
+
 @Component({
   selector: 'app-rrhh-empleados',
   templateUrl: './rrhh-empleados.component.html',
@@ -37,8 +49,35 @@ export class RrhhEmpleadosComponent implements OnInit {
         public mamiService:MamiService,
         private router:Router,
         private toastr: ToastrService
-    ) { }
+    ) {
+        // console.log(Object.getOwnPropertyNames(new EmpleadoModel()))
+        // console.log(Object.getOwnPropertyDescriptor(new EmpleadoModel(),'id'))
+        // console.log(Object.getOwnPropertyDescriptors(new EmpleadoModel()))
+        // console.log(Object.getOwnPropertyNames(new EmpleadoModel()))
+        // console.log(Object.getPrototypeOf(new EmpleadoModel()))
 
+        // var object = new EmpleadoModel(); 
+        // for (const key in object) {
+        //     if (Object.prototype.hasOwnProperty.call(object, key)) {
+        //         const element = object[key];
+        //         // console.log(key,typeof element)
+        //         this.listProperties.push( { key , type:typeof element })
+        //     }
+        // }
+        // console.log(this.listPropiedades)
+
+        // this.fieldsForm.push({ key:'id' , type:'string', comboValues:null });
+        // this.fieldsForm.push({ key:'nombre' , type:'string', comboValues:null });
+        // this.fieldsForm.push({ key:'activo' , type:'boolean', comboValues:null });
+        // this.fieldsForm.push({ key:'nacionalidad' , type:'combo', comboValues:['Argentina','Peru'] });
+
+     }
+
+    // listEncabezados:string[] = Object.keys(new EmpleadoModel());
+    // listProperties:IProperties[]=[];
+    // fieldsForm:IFormulario[]=[];
+    isEditMode:boolean=false;
+    
 
     //-------------------------------------------------------------------------------------------
     coll:any;
@@ -321,4 +360,13 @@ export class RrhhEmpleadosComponent implements OnInit {
             });
     }
 
+
+
+
+
+
+
 }
+
+    
+

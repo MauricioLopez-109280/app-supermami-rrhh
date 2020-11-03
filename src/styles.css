@@ -39,7 +39,9 @@
 }
 
 
-
+.flex-box {
+    display: flex;
+}
 
 
 

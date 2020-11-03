@@ -1,0 +1,104 @@
+
+<div class="row card animate__animated animate__fadeIn" >
+    <div class="card-header card-header-primary">
+        <h4 class="card-title">
+
+            <ng-container *ngIf="isEditMode; else elseTemplate">
+                <i class="material-icons">edit</i>
+                {{ tituloEditar }}
+            </ng-container>
+            <ng-template #elseTemplate>
+                <i class="material-icons">add</i>
+                {{ tituloCrear }}
+            </ng-template>
+
+        </h4>
+        <p class="card-category">Complete los datos</p>
+    </div>
+    <div class="card-body">   
+        <!-- <form  (ngSubmit)="sendForm( f )" #f="ngForm" >          -->
+        <form>
+
+            <mat-grid-list cols="2" rowHeight="100px" >
+
+            <div  *ngFor="let prop of fieldsForm; index as i; let even = even; let odd = odd;">
+                <ng-container *ngIf="prop.key=='id'; else elseTemplate">
+
+                    <!-- [style.background]="'#B7AEB9'" -->
+                        <mat-grid-tile [colspan]="2" [rowspan]="1"  *ngIf="isEditMode">
+                            <mat-form-field class="example-full-width " class="col-md-12">
+                                <input matInput placeholder="ID" disabled="disabled">
+                            </mat-form-field>
+                        </mat-grid-tile>
+
+                </ng-container>
+                <ng-template #elseTemplate>
+
+                    <!-- [style.background]="'#D8BEE1'" -->
+                            <mat-grid-tile [colspan]="1" [rowspan]="1"  *ngIf="fieldsForm[i]">
+
+                                <div [ngSwitch]="fieldsForm[i].type" class="col-md-12">
+                                    <div *ngSwitchCase="'boolean'">
+                                        <mat-checkbox class="example-margin" >
+                                            {{ fieldsForm[i].key }}
+                                        </mat-checkbox>
+                                    </div>
+                                    <div *ngSwitchCase="'combo'">
+                                        <mat-form-field appearance="fill" >
+                                            <mat-label>
+                                                {{ fieldsForm[i].key }}
+                                            </mat-label>
+                                            <mat-select>
+                                                <mat-option>None</mat-option>
+                                                <mat-option *ngFor="let comboValue of fieldsForm[i].comboValues" [value]="comboValue">
+                                                  {{ comboValue }}
+                                                </mat-option>
+                                                <!-- <mat-option *ngFor="let empleado of listEmpleados | async" [value]="empleado">
+                                                    {{ commonService.formatEmpleado(empleado) }}
+                                                </mat-option> -->
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div *ngSwitchCase="'date'">
+
+                                        <mat-form-field color="accent" appearance="fill">
+                                            <mat-label>  {{ fieldsForm[i].key }} </mat-label>
+                                            <input matInput [matDatepicker]="picker">
+                                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                            <mat-datepicker #picker></mat-datepicker>
+                                        </mat-form-field>
+                                          
+                                    </div>
+                                    <div *ngSwitchDefault>
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput [placeholder]="fieldsForm[i].key">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+
+                            </mat-grid-tile>
+
+                </ng-template>
+
+            </div>
+            </mat-grid-list>
+
+            <button mat-raised-button type="submit" class="btn btn-primary pull-right">
+                <i class="fa fa-save"></i>
+                Guardar
+            </button>
+            <button mat-raised-button type="button" class="btn btn-secondary center" >
+                <i class="fas fa-user-slash"></i>
+                Baja
+            </button>
+            <button mat-raised-button type="button" class="btn btn-secondary pull-left" >
+                <i class="fa fa-close"></i>
+                Cancelar
+            </button>
+
+            <div class="clearfix"></div>
+        </form>
+    </div>
+</div>
+
+

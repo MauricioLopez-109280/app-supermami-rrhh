@@ -1,44 +1,12 @@
 <div class="main-content" id="initPage">
     <div class="container-fluid">
         
-        <!-- <h1>TODO empleaditus</h1> -->
-
-        <!-- <div class="animate__animated animate__pulse  text-center">
-            <h1 *ngIf="starting">
-                <i class="fa fa-sync fa-spin"></i>
-            </h1>
-            <h1 *ngIf="!starting && heroe.id">
-               <small> {{ heroe.name }} </small>
-            </h1>
-            <h1 *ngIf="!starting && !heroe.id">
-                <small> Create a new Heroe </small>
-             </h1>
-        </div> -->
 
             <button class="collapsible empleados"> 
-                Crear-Editar
+                Crear-Editar-Baja
             </button>
             <div class="content">
 
-                <!-- 
-                    <div class="row" id="rowCrearEditarEmpleado">
-                    <div class="col-md-12 alert alert-inverse text-center" role="alert">
-                        <button mat-raised-button type="submit" class="btn btn-sm btn-dark pull-left" (click)="openCloseDiv('CrearEditarEmpleado','CREAR_EDITAR')">
-                            <div *ngIf="crearEditarIsOpen">
-                                <i class="fa fa-close"></i>
-                                cerrar
-                            </div>
-                            <div *ngIf="!crearEditarIsOpen">
-                                <i class="fa fa-edit"></i>
-                                abrir
-                            </div>
-                        </button>
-                        <h4>
-                            Crear/Editar
-                        </h4>
-                    </div>
-                </div> 
-                -->
 
                 <div class="row animate__animated animate__fadeIn" id="CrearEditarEmpleado" >
 
@@ -149,7 +117,12 @@
                                         <i class="fa fa-save"></i>
                                         Guardar
                                     </button>
-        
+
+                                    <button mat-raised-button type="button" class="btn btn-secondary center" (click)="clean()">
+                                        <i class="fas fa-user-slash"></i>
+                                        Baja
+                                    </button>
+
                                     <button mat-raised-button type="button" class="btn btn-secondary pull-left" (click)="clean()">
                                         <i class="fa fa-close"></i>
                                         Cancelar
@@ -171,25 +144,7 @@
             </button>
             <div class="content">
 
-                <!--
-                <div class="row">
-                    <div class="col-md-12 alert alert-inverse text-center" role="alert">
-                        <button mat-raised-button type="submit" class="btn btn-sm btn-dark pull-left" (click)="openCloseDiv('ConsultarEmpleado','CONSULTAR')">
-                            <div *ngIf="consultarIsOpen">
-                                <i class="fa fa-close"></i>
-                                cerrar
-                            </div>
-                            <div *ngIf="!consultarIsOpen">
-                                <i class="fa fa-edit"></i>
-                                abrir
-                            </div>
-                        </button>
-                        <h4>
-                            Consultar
-                        </h4>
-                    </div>
-                </div>
-                -->
+
                 <div class="row animate__animated animate__fadeIn " id="ConsultarEmpleado">
         
                     <div class="col-md-12">
@@ -226,7 +181,7 @@
         
                                             <tr *ngFor="let empleado of listEmpleados; index as i">
                                                 <td> {{ empleado.id }} </td>
-                                                <td> {{ empleado.curso }} </td>
+                                                <!-- <td> {{ empleado.curso }} </td> -->
                                                 <td class="text-primary"> {{ empleado.legajo }} </td>
                                                 <td> {{ empleado.apellido }} </td>
                                                 <td> {{  empleado.nombre }} </td>
