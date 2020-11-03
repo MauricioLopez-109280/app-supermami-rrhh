@@ -1,5 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 
+import {ThemePalette} from '@angular/material/core';
+import { PresentismoModel } from 'app/models/presentismo.model';
+import { CommonService } from 'app/services/common.service';
+
+export interface Task {
+    name: string;
+    completed: boolean;
+    color: ThemePalette;
+    subtasks?: Task[];
+}
+
 @Component({
   selector: 'app-rrhh-presentismo',
   templateUrl: './rrhh-presentismo.component.html',
@@ -7,35 +18,43 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RrhhPresentismoComponent implements OnInit {
 
-    constructor() { }
+    constructor(
+        public commonService:CommonService
+    ) {
 
+        // console.log(this.commonService.bodyRows(10) )
 
-//-------------------------------------------------------------------------------------------
-    coll:any;
-    animatedCollapsible(){
-        this.coll = document.getElementsByClassName("collapsible presentismo");
+     }
 
-        for (let i = 0; i < this.coll.length; i++) {
-            this.coll[i].addEventListener("click", function() {
-            this.classList.toggle("activeColapsible");
-            var content = this.nextElementSibling;
-            // console.log(content.style.maxHeight)
-            if (content.style.maxHeight && !this.deplegarSiempre){
-                content.style.maxHeight = null;
-            } else {
-                content.style.maxHeight = content.scrollHeight + "px";
-            } 
-          });
-        }
+    ngOnInit(){
+        this.reloadDatos(0);
     }
-//-------------------------------------------------------------------------------------------
-    initPage:any;
-    ngOnInit(): void {
-        this.initPage = document.getElementById('initPage');
-        this.animatedCollapsible();
-        this.coll[0].click();
+
+
+    listDatos:any[]=[];
+
+    reloadDatos(count:number){
+        this.listDatos = this.commonService.generarDatosRandomPresentismo(count);
     }
-//-------------------------------------------------------------------------------------------
+
+    favoriteSeason: string;
+    seasons: string[] = [
+        'Todos',
+        'Filtrar por falta injustificada y/o llegadas tardes', 
+        'Filtrar por demora promedio', 
+        'Filtrar por empleado'
+    ];
+
+    buscar(){
+        this.reloadDatos(10);
+    }
+
+    limpiar(){
+        this.listDatos = [];
+    }
+
+
+    listEncabezados:string[] = Object.keys(new PresentismoModel());
 
 
 }

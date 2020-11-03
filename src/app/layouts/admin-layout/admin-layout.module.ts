@@ -22,6 +22,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatRadioModule} from '@angular/material/radio';
 
 
 //easy components
@@ -49,9 +50,9 @@ import { FormgenericoComponent } from 'app/formgenerico/formgenerico.component';
     MatTooltipModule,
     MatCheckboxModule,
     MatGridListModule,
-
-    MatDatepickerModule,MatNativeDateModule
-
+    MatDatepickerModule,MatNativeDateModule,
+    MatRadioModule
+    
   ],
   declarations: [
     DashboardComponent,

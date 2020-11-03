@@ -1,6 +1,93 @@
-<div class="main-content">
+<div class="main-content" id="initPage">
     <div class="container-fluid">
         
+
+    <div class="row card animate__animated animate__fadeIn" >
+        <div class="card-header card-header-primary">
+            <h4 class="card-title">
+                <i class="material-icons">edit</i>
+                Presentismo
+            </h4>
+        </div>
+        <div class="card-body">   
+            <!-- <form  (ngSubmit)="sendForm( f )" #f="ngForm" >          -->
+
+                <mat-grid-list cols="2" rowHeight="100px" >
+
+
+                    <mat-grid-tile [colspan]="1" [rowspan]="2" class="text-left">
+
+                        <mat-radio-group
+                          aria-labelledby="example-radio-group-label"
+                          class="example-radio-group text-left"
+                          [(ngModel)]="favoriteSeason">
+                          <mat-radio-button class="example-radio-button" *ngFor="let season of seasons" [value]="season">
+                            {{season}}
+                          </mat-radio-button>
+                        </mat-radio-group>
+
+                    </mat-grid-tile>
+
+                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                        <mat-form-field appearance="fill" class="col-md-12">
+                            <mat-label> Ordenar Por </mat-label>
+                            <mat-select>
+                                <mat-option>None</mat-option>
+                                <mat-option *ngFor="let comboValue of ['Fecha','Legajo']" [value]="comboValue" >
+                                  {{ comboValue }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile [colspan]="1" [rowspan]="1" >
+
+                        <button mat-raised-button type="submit" class="btn btn-raised  col-md-6 mr-3"(click)="limpiar()">
+                            <i class="fa fa-broom"></i>
+                            Limpiar
+                        </button>
+
+                        <button mat-raised-button type="submit" class="btn btn-primary  col-md-6" (click)="buscar()">
+                            <i class="fa fa-search"></i>
+                            Buscar
+                        </button>
+
+                    </mat-grid-tile>
+
+                </mat-grid-list>
+
+        </div>
+    </div>
+
+    <table id="tableOrders" class="table table-hover">
+        <thead>
+            <th *ngFor="let encabezado of listEncabezados"> 
+                {{ encabezado }}
+            </th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of listDatos">
+                <td *ngFor="let encabezado of listEncabezados">
+                    <ng-container *ngIf="encabezado.toUpperCase().indexOf('FECHA')>-1; else elseTemplate">
+                        {{ item[encabezado] | date:'dd/MM/yyy' }}
+                    </ng-container>
+                    <ng-template #elseTemplate>
+                        <ng-container *ngIf="encabezado.toUpperCase().indexOf('HORA')>-1; else elseTemplate">
+                            {{ item[encabezado] | date:'HH:mm:ss' }}
+                        </ng-container>
+                        <ng-template #elseTemplate>
+                            {{ item[encabezado] }}
+                        </ng-template>
+                    </ng-template>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+
+<!--
         <button class="collapsible presentismo"> 
             Crear-Editar
         </button>
@@ -18,6 +105,7 @@
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda sed hic modi, temporibus alias consectetur veniam accusamus doloremque culpa atque provident et cupiditate. Architecto accusantium aspernatur facere sapiente. Alias, delectus?
             </p>
         </div>
+-->
 
     </div>
 </div>
