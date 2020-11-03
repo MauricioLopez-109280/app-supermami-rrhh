@@ -35,7 +35,7 @@
       
 <div class="row card animate__animated animate__fadeIn" >
     <div class="card-header card-header-primary">
-        <h4 class="card-title">
+        <h4 class="card-title" (click)="sendMessageClickTitulo()">
 
             <ng-container *ngIf="isEditMode; else elseTemplate">
                 <i class="material-icons">edit</i>

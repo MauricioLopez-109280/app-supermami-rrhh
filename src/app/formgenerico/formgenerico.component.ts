@@ -1,5 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IFormulario } from 'app/interfaces/formulario.interface';
+import { CommonService } from 'app/services/common.service';
+import { MamiService } from 'app/services/mami.service';
+import { Observable } from 'rxjs';
+import { EmpleadoModel } from 'app/models/empleado.model';
 
 
 @Component({
@@ -40,12 +44,17 @@ export class FormgenericoComponent implements OnInit {
         this.messageEventCancelar.emit()
     }
     
+    @Output() messageEventClickTitulo = new EventEmitter<any>();
+    sendMessageClickTitulo(){
+        this.messageEventClickTitulo.emit()
+    }
+
+    
 
 
 
 
-
-
+/*
     task: Task = {
         name: 'Indeterminate',
         completed: false,
@@ -82,22 +91,19 @@ export class FormgenericoComponent implements OnInit {
 
     toppings = new FormControl();
     toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
+*/
 
 }
 
-import {FormControl} from '@angular/forms';
-import {ThemePalette} from '@angular/material/core';
-import { CommonService } from 'app/services/common.service';
-import { MamiService } from 'app/services/mami.service';
-import { Observable } from 'rxjs';
-import { EmpleadoModel } from 'app/models/empleado.model';
+// import {FormControl} from '@angular/forms';
+// import {ThemePalette} from '@angular/material/core';
 
-export interface Task {
-    name: string;
-    completed: boolean;
-    color: ThemePalette;
-    subtasks?: Task[];
-  }
+// export interface Task {
+//     name: string;
+//     completed: boolean;
+//     color: ThemePalette;
+//     subtasks?: Task[];
+//   }
 
 
   

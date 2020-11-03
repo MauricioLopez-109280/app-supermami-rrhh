@@ -1,7 +1,7 @@
 <div class="main-content" id="initPage">
     <div class="container-fluid">
         
-        <button (click)="cambiarEditMode()" > cambiar edit mode </button>
+        <!-- <button (click)="cambiarEditMode()" > cambiar edit mode </button> -->
 
         <button class="collapsible capacitacion"> 
             Crear-Editar
@@ -9,15 +9,17 @@
         <div class="content mb-2">
 
             <app-formgenerico 
-            [fieldsForm]="fieldsForm"
-            [tituloCrear]="'Crear Capacitacion'"
-            [tituloEditar]="'Editar Capacitacion'"
-            [(isEditMode)]="isEditMode"
-            [objectoCrearEditar]="objectoCrearEditar"
-            (messageEventCrearEditar)="formgen_receiveMessageCrearEditar($event)"
-            (messageEventCancelar)="formgen_receiveMessageCancelar($event)"
+                [fieldsForm]="fieldsForm"
+                [tituloCrear]="'Crear Capacitacion'"
+                [tituloEditar]="'Editar Capacitacion'"
+                [(isEditMode)]="isEditMode"
+                [objectoCrearEditar]="objectoCrearEditar"
+                (messageEventCrearEditar)="formgen_receiveMessageCrearEditar($event)"
+                (messageEventCancelar)="formgen_receiveMessageCancelar($event)"
+                (messageEventClickTitulo)="formgen_receiveMessageClickTitulo($event)"
             >
             </app-formgenerico>
+
         </div>
 
         <button class="collapsible capacitacion"> 

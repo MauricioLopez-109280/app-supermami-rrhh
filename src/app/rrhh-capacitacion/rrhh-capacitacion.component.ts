@@ -54,8 +54,6 @@ ngOnInit(): void {
 
     //this.listEmpleados = this.mamiService.getEmpleados();
     this.listCapacitaciones = this.capacitacionService.getAll();
-    
-    this.loadEmpleados();
 
 }
 
@@ -66,12 +64,6 @@ ngAfterViewInit(): void {
     
 }
 
-loadEmpleados(){
-    // this.mamiService.getEmpleados().subscribe( resp =>{
-    //     // console.log(resp);
-    //     this.collectionEmpleados = resp;
-    // });
-}
 
 cambiarEditMode(){
     this.isEditMode=!this.isEditMode
@@ -103,12 +95,6 @@ clean(){
 
 
     loadFieldsForm(){
-
-        // this.mamiService.getEmpleados().subscribe( resp =>{
-        //     // console.log(resp);
-        //     this.collectionEmpleados = resp;
-        // })
-        // console.log(this.collectionEmpleados )
 
         this.fieldsForm.push({ key:'id' , type:'string', comboValues:null , collection:null });
         this.fieldsForm.push({ key:'nombre' , type:'string', comboValues:null , collection:null });
@@ -187,6 +173,11 @@ clean(){
         // console.log($event)
 
         this.clean();
+    }
+    formgen_receiveMessageClickTitulo($event) {
+        // console.log($event)
+
+        this.cambiarEditMode();
     }
 
 //-------------------------------------------------------------------------------------------

@@ -62,7 +62,7 @@
                                     </ng-container>
                                     <ng-template #elseTemplate>
                                         
-                                        <ng-container *ngIf="encabezado.indexOf('fecha')>-1; else elseTemplate">
+                                        <ng-container *ngIf="encabezado.toUpperCase().indexOf('FECHA')>-1; else elseTemplate">
                                             {{ item[encabezado] | date:'dd/MM/yyy' }}
                                         </ng-container>
                                         <ng-template #elseTemplate>

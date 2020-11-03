@@ -224,7 +224,7 @@ export class RrhhEmpleadosComponent implements OnInit {
         this.initPage.scrollIntoView();
 
         this.empleado = empleado;
-        this.openCloseDiv('CrearEditarEmpleado','CREAR_EDITAR',true)
+        // this.openCloseDiv('CrearEditarEmpleado','CREAR_EDITAR',true)
     }
 
     hasModifications(){
@@ -325,7 +325,7 @@ export class RrhhEmpleadosComponent implements OnInit {
                 this.clean();
                 form.reset();
 
-                this.openCloseDiv('CrearEditarEmpleado','CREAR_EDITAR',false)
+                // this.openCloseDiv('CrearEditarEmpleado','CREAR_EDITAR',false)
 
             });
 
