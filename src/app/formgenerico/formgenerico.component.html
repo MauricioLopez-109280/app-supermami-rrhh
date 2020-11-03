@@ -27,7 +27,7 @@
                     <!-- [style.background]="'#B7AEB9'" -->
                         <mat-grid-tile [colspan]="2" [rowspan]="1"  *ngIf="isEditMode">
                             <mat-form-field class="example-full-width " class="col-md-12">
-                                <input matInput placeholder="ID" disabled="disabled">
+                                <input matInput placeholder="ID" disabled="disabled" [(ngModel)]="objectoCrearEditar.id" name="id">
                             </mat-form-field>
                         </mat-grid-tile>
 
@@ -39,7 +39,7 @@
 
                                 <div [ngSwitch]="fieldsForm[i].type" class="col-md-12">
                                     <div *ngSwitchCase="'boolean'">
-                                        <mat-checkbox class="example-margin" >
+                                        <mat-checkbox class="example-margin" [(ngModel)]="objectoCrearEditar[fieldsForm[i].key]" [name]="fieldsForm[i].key">
                                             {{ fieldsForm[i].key }}
                                         </mat-checkbox>
                                     </div>
@@ -48,9 +48,9 @@
                                             <mat-label>
                                                 {{ fieldsForm[i].key }}
                                             </mat-label>
-                                            <mat-select>
+                                            <mat-select [(ngModel)]="objectoCrearEditar[fieldsForm[i].key]" [name]="fieldsForm[i].key">
                                                 <mat-option>None</mat-option>
-                                                <mat-option *ngFor="let comboValue of fieldsForm[i].comboValues" [value]="comboValue">
+                                                <mat-option *ngFor="let comboValue of fieldsForm[i].comboValues" [value]="comboValue" >
                                                   {{ comboValue }}
                                                 </mat-option>
                                                 <!-- <mat-option *ngFor="let empleado of listEmpleados | async" [value]="empleado">
@@ -61,9 +61,9 @@
                                     </div>
                                     <div *ngSwitchCase="'date'">
 
-                                        <mat-form-field color="accent" appearance="fill">
+                                        <mat-form-field color="accent" appearance="fill" >
                                             <mat-label>  {{ fieldsForm[i].key }} </mat-label>
-                                            <input matInput [matDatepicker]="picker">
+                                            <input matInput [matDatepicker]="picker"  [(ngModel)]="objectoCrearEditar[fieldsForm[i].key]" [name]="fieldsForm[i].key">
                                             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                             <mat-datepicker #picker></mat-datepicker>
                                         </mat-form-field>
@@ -71,7 +71,7 @@
                                     </div>
                                     <div *ngSwitchDefault>
                                         <mat-form-field class="example-full-width">
-                                            <input matInput [placeholder]="fieldsForm[i].key">
+                                            <input matInput [placeholder]="fieldsForm[i].key" [(ngModel)]="objectoCrearEditar[fieldsForm[i].key]" [name]="fieldsForm[i].key">
                                         </mat-form-field>
                                     </div>
                                 </div>
@@ -83,15 +83,15 @@
             </div>
             </mat-grid-list>
 
-            <button mat-raised-button type="submit" class="btn btn-primary pull-right">
+            <button mat-raised-button type="submit" class="btn btn-primary pull-right" (click)="sendMessageSave(objectoCrearEditar)">
                 <i class="fa fa-save"></i>
                 Guardar
             </button>
-            <button mat-raised-button type="button" class="btn btn-secondary center" >
+            <button mat-raised-button type="button" class="btn btn-secondary center" *ngIf="isEditMode" >
                 <i class="fas fa-user-slash"></i>
                 Baja
             </button>
-            <button mat-raised-button type="button" class="btn btn-secondary pull-left" >
+            <button mat-raised-button type="button" class="btn btn-secondary pull-left" (click)="sendMessageCancelar()">
                 <i class="fa fa-close"></i>
                 Cancelar
             </button>

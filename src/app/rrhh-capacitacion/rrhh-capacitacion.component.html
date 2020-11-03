@@ -13,6 +13,9 @@
             [tituloCrear]="'Crear Capacitacion'"
             [tituloEditar]="'Editar Capacitacion'"
             [(isEditMode)]="isEditMode"
+            [objectoCrearEditar]="objectoCrearEditar"
+            (messageEventCrearEditar)="formgen_receiveMessageCrearEditar($event)"
+            (messageEventCancelar)="formgen_receiveMessageCancelar($event)"
             >
             </app-formgenerico>
         </div>
@@ -27,7 +30,9 @@
                 [tituloListado]="'Consultar Capacitaciones'"
                 [listEncabezados]="listEncabezados"
                 [listObjetos]="listCapacitaciones"
-                (messageEvent)="receiveMessage($event)"
+                (messageEventEdit)="gridgral_receiveMessageEdit($event)"
+                (messageEventBuscar)="gridgral_receiveMessageBuscar($event)"
+                (messageEventDelete)="gridgral_receiveMessageDelete($event)"
             >
             </app-gridgral>
 

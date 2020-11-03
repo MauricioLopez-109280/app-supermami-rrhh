@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IFormulario } from 'app/interfaces/formulario.interface';
 
 
@@ -21,4 +21,18 @@ export class FormgenericoComponent implements OnInit {
 
     @Input() isEditMode:boolean=false;
     
+    @Input() objectoCrearEditar:any={};
+
+
+    @Output() messageEventCrearEditar = new EventEmitter<any>();
+    sendMessageSave(objectoCrearEditar){
+        this.messageEventCrearEditar.emit(objectoCrearEditar)
+    }
+
+    @Output() messageEventCancelar = new EventEmitter<any>();
+    sendMessageCancelar(){
+        this.messageEventCancelar.emit()
+    }
+    
+
 }

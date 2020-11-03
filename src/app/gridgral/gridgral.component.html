@@ -11,8 +11,8 @@
             </div>
 
             <form class="form-inline my-3 ml-3">
-                <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search" #search>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="sendMessageBuscar(search.value)">
                     Buscar
                 </button>
             </form>
@@ -36,7 +36,7 @@
 
                         <tbody>
 
-                            <tr *ngFor="let item of listObjetos; index as i">
+                            <tr *ngFor="let item of listObjetos | async; index as i">
 
                                 <td *ngFor="let encabezado of listEncabezados"> 
 
@@ -57,15 +57,29 @@
 
                                     </ng-container>
                                     <ng-template #elseTemplate>
-                                        {{ item[encabezado] }}
+                                        
+                                        <ng-container *ngIf="encabezado.indexOf('fecha')>-1; else elseTemplate">
+                                            {{ item[encabezado] | date:'dd/MM/yyy' }}
+                                        </ng-container>
+                                        <ng-template #elseTemplate>
+                                            {{ item[encabezado] }}
+                                        </ng-template>
+                          
                                     </ng-template>
+
 
                                 </td>
 
+                                <!-- ACCIONES -->
                                 <td class="text-center">
-                                    <button type="button" class="btn btn-outline-warning  mr-3 " (click)="sendMessage(item)">
+
+                                    <button type="button" class="btn btn-outline-warning  mr-3 " (click)="sendMessageEdit(item)">
                                         <i class="fa fa-edit"></i>
                                         edit
+                                    </button>
+                                    <button type="button" class="btn btn-outline-danger  mr-3 " (click)="sendMessageDelete(item)">
+                                        <i class="fa fa-trash"></i>
+                                        delete
                                     </button>
                                 </td>
 

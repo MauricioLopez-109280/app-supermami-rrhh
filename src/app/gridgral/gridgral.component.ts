@@ -12,8 +12,6 @@ export class GridgralComponent implements OnInit {
     @Input() listObjetos:any[] = [];
     @Input() listEncabezados:string[];
 
-    // message: string = "Hola Mundo!"
-    @Output() messageEvent = new EventEmitter<string>();
     
     constructor() { }
 
@@ -24,10 +22,20 @@ export class GridgralComponent implements OnInit {
         // console.log(this.listEncabezados)
     }
 
-    sendMessage(objetoEditar:any) {
-        // this.messageEvent.emit(this.message)
-        this.messageEvent.emit(objetoEditar)
+    @Output() messageEventEdit = new EventEmitter<string>();
+    sendMessageEdit(objetoEditar:any) {
+        this.messageEventEdit.emit(objetoEditar)
     }
 
+    @Output() messageEventBuscar = new EventEmitter<string>();
+    sendMessageBuscar(texto:string){
+        this.messageEventBuscar.emit(texto)
+    }
+
+    
+    @Output() messageEventDelete = new EventEmitter<string>();
+    sendMessageDelete(objetoEliminar:any) {
+        this.messageEventDelete.emit(objetoEliminar)
+    }
 
 }
