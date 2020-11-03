@@ -100,5 +100,20 @@ export class CapacitacionService {
         })
     }
 
+    cambiarEstadoConfirm( objeto:CapacitacionModel){
+
+        let message = objeto.activo ? 'dar de BAJA' : 'dar de ALTA';
+
+        return Swal.fire({
+            title: objeto.nombre,
+            text: `Esta seguro que desea ${message} la capacitacion ?`,
+            icon: objeto.activo ? 'error' : 'warning',
+            showConfirmButton: true,
+            showCancelButton: true
+        })
+    }
+
+    
+
 
 }

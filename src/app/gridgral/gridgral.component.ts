@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { CommonService } from 'app/services/common.service';
 
 @Component({
   selector: 'app-gridgral',
@@ -13,7 +14,9 @@ export class GridgralComponent implements OnInit {
     @Input() listEncabezados:string[];
 
     
-    constructor() { }
+    constructor(
+        public commonService:CommonService
+    ) { }
 
     ngOnInit(): void {
         // console.log(this.idDivContenedor)
@@ -38,4 +41,14 @@ export class GridgralComponent implements OnInit {
         this.messageEventDelete.emit(objetoEliminar)
     }
 
+
+    @Output() messageEventCambiarEstado = new EventEmitter<string>();
+    sendMessageCambiarEstado(objetoCambiarEstado:any) {
+        this.messageEventCambiarEstado.emit(objetoCambiarEstado)
+    }
+
+
 }
+
+
+  

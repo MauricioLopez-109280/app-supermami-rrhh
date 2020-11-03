@@ -1,3 +1,5 @@
+import { EmpleadoModel } from "./empleado.model";
+
 export class CapacitacionModel {
 
     id:string;
@@ -6,6 +8,7 @@ export class CapacitacionModel {
     fechaInicio:Date;
     fechaFin:Date;
     activo: boolean;
+    empleados:EmpleadoModel[];
 
     constructor(
         nombre: string = '',
@@ -20,6 +23,7 @@ export class CapacitacionModel {
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.activo = activo;
+        this.empleados=[];
     }
 
 

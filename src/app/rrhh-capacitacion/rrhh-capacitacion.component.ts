@@ -28,10 +28,10 @@ export class RrhhCapacitacionComponent implements OnInit {
     isEditMode:boolean=false;
     fieldsForm:IFormulario[]=[];
     
-    listEmpleados: Observable<Array<EmpleadoModel>>;
+    //listEmpleados: Observable<Array<EmpleadoModel>>;
     listCapacitaciones: Observable<Array<CapacitacionModel>>;
     
-    // listCapacitaciones:CapacitacionModel[];
+    collectionEmpleados:EmpleadoModel[]=[];
 
     constructor(
         public mamiService:MamiService,
@@ -51,18 +51,28 @@ ngOnInit(): void {
     this.initPage = document.getElementById('initPage');
     this.animatedCollapsible();
     
-    this.loadCapacitaciones();
 
-    this.listEmpleados = this.mamiService.getEmpleados();
+    //this.listEmpleados = this.mamiService.getEmpleados();
     this.listCapacitaciones = this.capacitacionService.getAll();
     
+    this.loadEmpleados();
+
 }
 
 ngAfterViewInit(): void {
-    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
-    //Add 'implements AfterViewInit' to the class.
+
     this.coll[0].click();
+
+    
 }
+
+loadEmpleados(){
+    // this.mamiService.getEmpleados().subscribe( resp =>{
+    //     // console.log(resp);
+    //     this.collectionEmpleados = resp;
+    // });
+}
+
 cambiarEditMode(){
     this.isEditMode=!this.isEditMode
 
@@ -88,31 +98,31 @@ clean(){
     this.isEditMode = false;
 }
 
+
 //-------------------------------------------------------------------------------------------
 
 
     loadFieldsForm(){
-        this.fieldsForm.push({ key:'id' , type:'string', comboValues:null });
-        this.fieldsForm.push({ key:'nombre' , type:'string', comboValues:null });
-        this.fieldsForm.push({ key:'tema' , type:'combo', comboValues:['Angular','Vue','React','Node','MongoDB'] });
 
-        this.fieldsForm.push({ key:'fechaInicio' , type:'date', comboValues:null });
-        this.fieldsForm.push({ key:'fechaFin' , type:'date', comboValues:null });
+        // this.mamiService.getEmpleados().subscribe( resp =>{
+        //     // console.log(resp);
+        //     this.collectionEmpleados = resp;
+        // })
+        // console.log(this.collectionEmpleados )
 
-        this.fieldsForm.push({ key:'activo' , type:'boolean', comboValues:null });
+        this.fieldsForm.push({ key:'id' , type:'string', comboValues:null , collection:null });
+        this.fieldsForm.push({ key:'nombre' , type:'string', comboValues:null , collection:null });
+        this.fieldsForm.push({ key:'tema' , type:'combo', comboValues:['Angular','Vue','React','Node','MongoDB'] , collection:null});
+
+        this.fieldsForm.push({ key:'fechaInicio' , type:'date', comboValues:null, collection:null });
+        this.fieldsForm.push({ key:'fechaFin' , type:'date', comboValues:null, collection:null });
+
+        this.fieldsForm.push({ key:'activo' , type:'boolean', comboValues:null , collection:null});
+
+        this.fieldsForm.push({ key:'empleados' , type:'collection-empleados', comboValues:null , collection:null });
+
     }
 
-//-------------------------------------------------------------------------------------------
-    loadCapacitaciones(){
-        // this.loading = true;
-
-        // this.capacitacionService.getAll()
-        //     .subscribe( resp => {
-        //         // console.log(resp)
-        //         this.listCapacitaciones = resp;
-        //         // this.loading = false;
-        //     });
-    }
 //-------------------------------------------------------------------------------------------
     coll:any;
     animatedCollapsible(){
@@ -159,6 +169,13 @@ clean(){
 
         this.delete($event);
     }
+    gridgral_receiveMessageCambiarEstado($event) {
+        // console.log($event)
+
+        this.cambiarEstado($event);
+    }
+    
+
 
     formgen_receiveMessageCrearEditar($event) {
         // console.log($event)
@@ -215,7 +232,7 @@ clean(){
         });
     }
   
-
+//----------------------------------------------------------------------------------------------
     delete( objeto:CapacitacionModel ){
         
         this.capacitacionService.deleteConfirm(objeto)
@@ -246,6 +263,54 @@ clean(){
             });
 
     }
+
+//----------------------------------------------------------------------------------------------
+    cambiarEstado( objeto:CapacitacionModel  ){
+        
+        this.capacitacionService.cambiarEstadoConfirm(objeto)
+            .then( resp => {
+
+                if(resp.value){
+
+                    objeto.activo = !objeto.activo;
+                    this.capacitacionService.update(objeto)
+                        .subscribe( resp => {
+                            
+                            let message = `La capacitacion <strong> ${ objeto.id }, ${ objeto.nombre }</strong><br> ha sido dado de`;
+                            
+                            if(!objeto.activo){
+                                this.toastr.error(
+                                    `${ message } BAJA`, 
+                                    "Notification",
+                                    {
+                                        enableHtml: true,
+                                        closeButton: true,
+                                        extendedTimeOut: 300,
+                                        positionClass: 'toast-bottom-left'
+                                    }
+                                );
+                            }
+                            else{
+                                this.toastr.success(
+                                    `${ message } ALTA`, 
+                                    "Notification",
+                                    {
+                                        enableHtml: true,
+                                        closeButton: true,
+                                        extendedTimeOut: 300,
+                                        positionClass: 'toast-bottom-left'
+                                    }
+                                );
+                            }
+
+                        });
+                }
+            });
+
+    }
+//----------------------------------------------------------------------------------------------
+
+
 
 
 }

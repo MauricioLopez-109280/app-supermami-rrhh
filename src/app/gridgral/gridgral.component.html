@@ -1,5 +1,7 @@
 
 
+
+
 <div class="row animate__animated animate__fadeIn " [id]="idDivContenedor">
      
         <div class="card">
@@ -44,7 +46,9 @@
 
                                         <button type="button" class="btn btn-outline-primary " 
                                             [class.btn-outline-success]="item.activo"
-                                            [class.btn-outline-danger]="!item.activo">
+                                            [class.btn-outline-danger]="!item.activo"
+                                            (click)="sendMessageCambiarEstado(item)"
+                                        >
                                             <div *ngIf="item.activo">
                                                 <i class="fa fa-arrow-up"></i>
                                                 alta
@@ -62,7 +66,23 @@
                                             {{ item[encabezado] | date:'dd/MM/yyy' }}
                                         </ng-container>
                                         <ng-template #elseTemplate>
-                                            {{ item[encabezado] }}
+
+                                            <ng-container *ngIf="encabezado=='empleados'; else elseTemplate">
+                                                
+                                                <mat-form-field appearance="fill" >
+                                                    <mat-label> empleados </mat-label>
+                                                    <mat-select >
+                                                      <mat-option *ngFor="let empleado of item[encabezado] " [value]="empleado">
+                                                          {{  commonService.formatObjeto(empleado) }}
+                                                      </mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
+
+                                            </ng-container>
+                                            <ng-template #elseTemplate>
+                                                {{ item[encabezado] }}
+                                            </ng-template>
+
                                         </ng-template>
                           
                                     </ng-template>
@@ -73,11 +93,11 @@
                                 <!-- ACCIONES -->
                                 <td class="text-center">
 
-                                    <button type="button" class="btn btn-outline-warning  mr-3 " (click)="sendMessageEdit(item)">
+                                    <button type="button" class="btn btn-outline-warning btn-sm mr-3 " (click)="sendMessageEdit(item)">
                                         <i class="fa fa-edit"></i>
                                         edit
                                     </button>
-                                    <button type="button" class="btn btn-outline-danger  mr-3 " (click)="sendMessageDelete(item)">
+                                    <button type="button" class="btn btn-outline-danger btn-sm mr-3 " (click)="sendMessageDelete(item)">
                                         <i class="fa fa-trash"></i>
                                         delete
                                     </button>

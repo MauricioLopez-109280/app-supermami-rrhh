@@ -1,3 +1,4 @@
+import { NgStyle, NgSwitch } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { EmpleadoModel } from 'app/models/empleado.model';
 
@@ -9,8 +10,10 @@ export class CommonService {
     constructor() { }
 
 
-    formatEmpleado(empleado:EmpleadoModel){
-        return `${empleado.cuit} -  ${empleado.apellido}, ${empleado.nombre}`;
+    formatObjeto(objeto:any){
+
+        return `${objeto.apellido}, ${objeto.nombre}`;
+        
     }
     
 

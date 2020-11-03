@@ -49,4 +49,5 @@ export class EmpleadoModel {
         return this.activo ? 'ACTIVO' : 'BAJA';
     }
 
+    
 }

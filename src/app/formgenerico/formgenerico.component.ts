@@ -9,10 +9,16 @@ import { IFormulario } from 'app/interfaces/formulario.interface';
 })
 export class FormgenericoComponent implements OnInit {
 
-    constructor() { }
+    listEmpleados: Observable<Array<EmpleadoModel>>;
+
+    constructor(
+        public commonService:CommonService,
+        public mamiService:MamiService
+    ) { }
 
     ngOnInit(): void {
-
+        // console.log(this.fieldsForm)
+        this.listEmpleados = this.mamiService.getEmpleados();
     }
 
     @Input() fieldsForm:IFormulario[]=[];
@@ -35,4 +41,63 @@ export class FormgenericoComponent implements OnInit {
     }
     
 
+
+
+
+
+
+    task: Task = {
+        name: 'Indeterminate',
+        completed: false,
+        color: 'primary',
+        subtasks: [
+          {name: 'Primary', completed: false, color: 'primary'},
+          {name: 'Accent', completed: false, color: 'accent'},
+          {name: 'Warn', completed: false, color: 'warn'}
+        ]
+      };
+
+    allComplete: boolean = false;
+
+    updateAllComplete() {
+      this.allComplete = this.task.subtasks != null && this.task.subtasks.every(t => t.completed);
+    }
+  
+    someComplete(): boolean {
+      if (this.task.subtasks == null) {
+        return false;
+      }
+      return this.task.subtasks.filter(t => t.completed).length > 0 && !this.allComplete;
+    }
+  
+    setAll(completed: boolean) {
+      this.allComplete = completed;
+      if (this.task.subtasks == null) {
+        return;
+      }
+      this.task.subtasks.forEach(t => t.completed = completed);
+    }
+
+
+
+    toppings = new FormControl();
+    toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
+
 }
+
+import {FormControl} from '@angular/forms';
+import {ThemePalette} from '@angular/material/core';
+import { CommonService } from 'app/services/common.service';
+import { MamiService } from 'app/services/mami.service';
+import { Observable } from 'rxjs';
+import { EmpleadoModel } from 'app/models/empleado.model';
+
+export interface Task {
+    name: string;
+    completed: boolean;
+    color: ThemePalette;
+    subtasks?: Task[];
+  }
+
+
+  
