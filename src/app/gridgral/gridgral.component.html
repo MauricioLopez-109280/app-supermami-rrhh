@@ -1,0 +1,100 @@
+
+
+<div class="row animate__animated animate__fadeIn " [id]="idDivContenedor">
+     
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title ">
+                    <i class="material-icons">library_books</i>
+                    {{ tituloListado }}
+                </h4>
+            </div>
+
+            <form class="form-inline my-3 ml-3">
+                <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                    Buscar
+                </button>
+            </form>
+
+            <div class="">
+                <div class="table-responsive tabla-scroll">
+                    <table class="table table-hover mt-3 animate__animated animate__fadeIn ">
+
+                        <thead class=" text-primary">
+                            <th *ngFor="let encabezado of listEncabezados"> 
+                                <ng-container *ngIf="encabezado==='activo'; else elseTemplate">
+                                    estado
+                                </ng-container>
+                                <ng-template #elseTemplate>
+                                    {{ encabezado }}
+                                </ng-template>
+                                
+                            </th>
+                            <th class="text-center"> Acciones </th>
+                        </thead>
+
+                        <tbody>
+
+                            <tr *ngFor="let item of listObjetos; index as i">
+
+                                <td *ngFor="let encabezado of listEncabezados"> 
+
+                                    <ng-container *ngIf="encabezado==='activo'; else elseTemplate">
+
+                                        <button type="button" class="btn btn-outline-primary " 
+                                            [class.btn-outline-success]="item.activo"
+                                            [class.btn-outline-danger]="!item.activo">
+                                            <div *ngIf="item.activo">
+                                                <i class="fa fa-arrow-up"></i>
+                                                alta
+                                            </div>
+                                            <div *ngIf="!item.activo">
+                                                <i class="fa fa-arrow-down"></i>
+                                                baja
+                                            </div>
+                                        </button>
+
+                                    </ng-container>
+                                    <ng-template #elseTemplate>
+                                        {{ item[encabezado] }}
+                                    </ng-template>
+
+                                </td>
+
+                                <td class="text-center">
+                                    <button type="button" class="btn btn-outline-warning  mr-3 " (click)="sendMessage(item)">
+                                        <i class="fa fa-edit"></i>
+                                        edit
+                                    </button>
+                                </td>
+
+                                <!-- <button (click)="sendMessage()">Send Message</button> -->
+
+                            </tr>
+
+                        </tbody>
+                        
+                    </table>
+                </div>
+            </div>
+        
+        </div>
+</div>
+
+
+
+<!-- 
+<div>
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered" style="width: 800px;">
+        <tr><th>First Name</th><th>Last Name</th><th>Age</th></tr>
+        <tr><td><a class="cl" href="">Mickey</a></td><td>Mouse</td><td>5</td>
+        <tr><td><a class="cl" href="">Tom</a></td><td>Cat</td><td>6</td>
+        <tr><td><a class="cl" href="">Pooh</a></td><td>Bear</td><td>4</td>
+        <tr><td><a class="cl" href="">Donald</a></td><td>Duck</td><td>7</td>
+        <tr><td><a class="cl" href="">Jerry</a></td><td>Mouse</td><td>8</td>
+       </table>
+    </div>
+</div> 
+-->

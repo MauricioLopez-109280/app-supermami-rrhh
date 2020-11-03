@@ -11,6 +11,7 @@ export class EmpleadoModel {
     activo: boolean;
 
     constructor(apellido: string = '', nombre: string = '',email:string='', legajo: number = 0, imagen:string='', curso:string='2W2'){
+        this.id = null;
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;

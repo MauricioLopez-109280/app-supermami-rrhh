@@ -25,6 +25,7 @@ import { RrhhPresentismoComponent } from '../../rrhh-presentismo/rrhh-presentism
 import { RrhhCapacitacionComponent } from '../../rrhh-capacitacion/rrhh-capacitacion.component';
 import { RrhhPerformanceComponent } from '../../rrhh-performance/rrhh-performance.component';
 import { RrhhReportesComponent } from '../../rrhh-reportes/rrhh-reportes.component';
+import { GridgralComponent } from 'app/gridgral/gridgral.component';
 
 @NgModule({
   imports: [
@@ -50,11 +51,13 @@ import { RrhhReportesComponent } from '../../rrhh-reportes/rrhh-reportes.compone
     // UpgradeComponent,
 
     RrhhEmpleadosComponent, 
-    // RrhhLicenciasComponent, 
-    // RrhhPresentismoComponent,
-    // RrhhCapacitacionComponent,
-    // RrhhPerformanceComponent,
-    // RrhhReportesComponent
+    RrhhLicenciasComponent, 
+    RrhhPresentismoComponent,
+    RrhhCapacitacionComponent,
+    RrhhPerformanceComponent,
+    RrhhReportesComponent,
+
+    GridgralComponent,
     
   ]
 })

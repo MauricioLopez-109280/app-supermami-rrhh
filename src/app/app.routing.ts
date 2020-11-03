@@ -8,8 +8,8 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 const routes: Routes =[
   {
     path: '',
-    // redirectTo: 'dashboard',
-    redirectTo: 'easy-empleados',
+    redirectTo: 'dashboard',
+    // redirectTo: 'easy-empleados',
     pathMatch: 'full',
   }, {
     path: '',

@@ -1,10 +1,12 @@
 
 
 .bgimg {
-    background-image: url(../../assets/img/main-image.jpg);
+
+    /* background-image: url(../../assets/img/main-image.jpg);
     background-repeat: no-repeat;
-    background-position-x: center;
-    background-size: contain;
+    background-position-x: center; */
+    background-size: contain; 
+    
 }
 
 /* Container holding the image and the text */

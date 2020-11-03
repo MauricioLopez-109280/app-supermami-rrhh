@@ -29,7 +29,7 @@ export class RrhhEmpleadosComponent implements OnInit {
     last = new EmpleadoModel();
     loading = false;
     starting = false;
-    initPage:any;
+    
     crearEditarIsOpen = true;
     consultarIsOpen = true;
 
@@ -40,34 +40,34 @@ export class RrhhEmpleadosComponent implements OnInit {
     ) { }
 
 
+    //-------------------------------------------------------------------------------------------
     coll:any;
     animatedCollapsible(){
-        this.coll = document.getElementsByClassName("collapsible");
+        this.coll = document.getElementsByClassName("collapsible empleados");
 
         for (let i = 0; i < this.coll.length; i++) {
-
             this.coll[i].addEventListener("click", function() {
-
             this.classList.toggle("activeColapsible");
             var content = this.nextElementSibling;
-
             // console.log(content.style.maxHeight)
-
             if (content.style.maxHeight && !this.deplegarSiempre){
-              content.style.maxHeight = null;
+                content.style.maxHeight = null;
             } else {
-              content.style.maxHeight = content.scrollHeight + "px";
+                content.style.maxHeight = content.scrollHeight + "px";
             } 
-
           });
         }
     }
+    //-------------------------------------------------------------------------------------------
 
+    initPage:any;
     ngOnInit(): void {
         this.loadEmpleados();
-        this.animatedCollapsible();
         this.initPage = document.getElementById('initPage');
+        this.animatedCollapsible();
+        this.coll[0].click();
     }
+    //-------------------------------------------------------------------------------------------
 
     ngAfterViewInit(): void {
         // document.getElementById('ConsultarEmpleado').style.display = 'none';

@@ -1,7 +1,82 @@
-<div class="main-content">
+<div class="main-content" id="initPage">
     <div class="container-fluid">
         
-        <h1>TODO Capacitacion</h1>
+
+        <button class="collapsible capacitacion"> 
+            Crear-Editar
+        </button>
+        <div class="content">
+
+            <div class="row animate__animated animate__fadeIn" id="CrearEditarCapacitacion" >
+                <div class="col-md-12">
+                    <div class="card">
+
+                        <div class="card-header card-header-primary">
+                            <h4 class="card-title">
+
+                                <ng-container *ngIf="isEditMode; else elseTemplate">
+                                    <i class="material-icons">edit</i>
+                                    Editar Capacitacion
+                                </ng-container>
+                                <ng-template #elseTemplate>
+                                    <i class="material-icons">add</i>
+                                    Crear Capacitacion
+                                </ng-template>
+
+                            </h4>
+                            <p class="card-category">Complete los datos</p>
+                        </div>
+
+                        <div class="card-body">
+    
+                            <form  (ngSubmit)="sendForm( f )" #f="ngForm" >
+    
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput placeholder="ID" disabled="disabled" [(ngModel)]="objetoCrearModificar.id" name="id">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+    
+
+
+    
+                                <button mat-raised-button type="submit" class="btn btn-primary pull-right">
+                                    <i class="fa fa-save"></i>
+                                    Guardar
+                                </button>
+                                <button mat-raised-button type="button" class="btn btn-secondary pull-left" (click)="clean()">
+                                    <i class="fa fa-close"></i>
+                                    Cancelar
+                                </button>
+                                <div class="clearfix"></div>
+                                
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <button class="collapsible capacitacion"> 
+            Consultar
+        </button>
+        <div class="content">
+
+            <app-gridgral 
+                [idDivContenedor]="'ConsultarCapacitacion'"
+                [tituloListado]="'Consultar Capacitaciones'"
+                [listEncabezados]="listEncabezados"
+                [listObjetos]="listCapacitaciones"
+                (messageEvent)="receiveMessage($event)"
+            >
+            </app-gridgral>
+
+        </div>
 
 
 

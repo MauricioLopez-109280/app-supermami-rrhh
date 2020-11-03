@@ -27,12 +27,13 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 
 import { ToastrModule } from 'ngx-toastr';
 
+
 //easy components
-import { RrhhLicenciasComponent } from './rrhh-licencias/rrhh-licencias.component';
-import { RrhhPresentismoComponent } from './rrhh-presentismo/rrhh-presentismo.component';
-import { RrhhPerformanceComponent } from './rrhh-performance/rrhh-performance.component';
-import { RrhhCapacitacionComponent } from './rrhh-capacitacion/rrhh-capacitacion.component';
-import { RrhhReportesComponent } from './rrhh-reportes/rrhh-reportes.component';
+// import { RrhhLicenciasComponent } from './rrhh-licencias/rrhh-licencias.component';
+// import { RrhhPresentismoComponent } from './rrhh-presentismo/rrhh-presentismo.component';
+// import { RrhhPerformanceComponent } from './rrhh-performance/rrhh-performance.component';
+// import { RrhhCapacitacionComponent } from './rrhh-capacitacion/rrhh-capacitacion.component';
+// import { RrhhReportesComponent } from './rrhh-reportes/rrhh-reportes.component';
 
 
 @NgModule({
@@ -54,11 +55,9 @@ import { RrhhReportesComponent } from './rrhh-reportes/rrhh-reportes.component';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    RrhhLicenciasComponent,
-    RrhhPresentismoComponent,
-    RrhhPerformanceComponent,
-    RrhhCapacitacionComponent,
-    RrhhReportesComponent,
+    
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]
