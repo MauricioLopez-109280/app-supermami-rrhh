@@ -1,7 +1,96 @@
-<div class="main-content">
+<div class="main-content" id="initPage">
     <div class="container-fluid">
         
-        <button class="collapsible reportes"> 
+
+        <div class="row card animate__animated animate__fadeIn" >
+            <div class="card-header card-header-primary">
+                <h4 class="card-title">
+                    <i class="material-icons">list</i>
+                    Reportes
+                </h4>
+            </div>
+            <div class="card-body">   
+                <!-- <form  (ngSubmit)="sendForm( f )" #f="ngForm" >          -->
+    
+                    <mat-grid-list cols="4" rowHeight="100px" >
+        
+                        <mat-grid-tile [colspan]="2" [rowspan]="1" class="text-left">
+
+                            <mat-form-field appearance="fill" class="col-md-12">
+                                <mat-label> Seleccionar Reporte </mat-label>
+                                <mat-select [(ngModel)]="reporteSeleccionado">
+                                    <mat-option>None</mat-option>
+                                    <mat-option *ngFor="let comboValue of listReportes" [value]="comboValue" >
+                                      {{ comboValue }}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+    
+                        </mat-grid-tile>
+        
+                        <mat-grid-tile [colspan]="1" [rowspan]="1" >
+    
+                            <button mat-raised-button type="submit" class="btn btn-raised  col-md-6 mr-3"(click)="limpiar()">
+                                <i class="fa fa-broom"></i>
+                                Limpiar
+                            </button>
+    
+                            <button mat-raised-button type="submit" class="btn btn-primary  col-md-6" (click)="buscar()"
+                                [disabled]="!reporteSeleccionado ? 'disabled' : null "
+                            >
+                                <i class="fa fa-search"></i>
+                                Buscar
+                            </button>
+    
+                        </mat-grid-tile>
+
+                        <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                            
+                            <button mat-raised-button type="submit" class="btn btn-success col-md-6" (click)="exportarPDF('tableReporte')"
+                                [disabled]="!reporteSeleccionado ? 'disabled' : null "
+                                [ngClass]=" reporteSeleccionado && listDatos.length > 0 ? 'btn-success' : 'btn-secondary' "
+                            >
+                                <i class="far fa-file-pdf"></i>
+                                Exportar
+                            </button>
+
+                        </mat-grid-tile>
+    
+
+                    </mat-grid-list>
+    
+            </div>
+        </div>
+    
+        <h1>{{reporteSeleccionado}}</h1>
+
+        <table id="tableReporte" class="table table-hover">
+            <thead>
+                <th *ngFor="let encabezado of listEncabezados"> 
+                    {{ encabezado }}
+                </th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of listDatos">
+                    <td *ngFor="let encabezado of listEncabezados">
+                        <ng-container *ngIf="encabezado.toUpperCase().indexOf('FECHA')>-1; else elseTemplate">
+                            {{ item[encabezado] | date:'dd/MM/yyy' }}
+                        </ng-container>
+                        <ng-template #elseTemplate>
+                            <ng-container *ngIf="encabezado.toUpperCase().indexOf('HORA')>-1; else elseTemplate">
+                                {{ item[encabezado] | date:'HH:mm:ss' }}
+                            </ng-container>
+                            <ng-template #elseTemplate>
+                                {{ item[encabezado] }}
+                            </ng-template>
+                        </ng-template>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <!-- <button class="collapsible reportes"> 
             Reporte 1
         </button>
         <div class="content">
@@ -63,7 +152,7 @@
                 </tbody>
             </table>
 
-        </div>
+        </div> -->
 
 
 

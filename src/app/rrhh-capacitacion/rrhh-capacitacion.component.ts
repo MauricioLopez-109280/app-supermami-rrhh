@@ -98,7 +98,7 @@ clean(){
 
         this.fieldsForm.push({ key:'id' , type:'string', comboValues:null , collection:null });
         this.fieldsForm.push({ key:'nombre' , type:'string', comboValues:null , collection:null });
-        this.fieldsForm.push({ key:'tema' , type:'combo', comboValues:['Angular','Vue','React','Node','MongoDB'] , collection:null});
+        this.fieldsForm.push({ key:'tema' , type:'combo', comboValues:['Angular','Vue','React','Node','MongoDB','Scrum'] , collection:null});
 
         this.fieldsForm.push({ key:'fechaInicio' , type:'date', comboValues:null, collection:null });
         this.fieldsForm.push({ key:'fechaFin' , type:'date', comboValues:null, collection:null });

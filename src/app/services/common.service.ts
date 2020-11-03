@@ -82,4 +82,49 @@ export class CommonService {
     }
 
 
+    generarDatosRandomReporte(count:number=10){
+
+        var body = []
+        for (var j = 1; j <= count; j++) {
+          body.push({
+            ID: j,
+            Nombre: faker.name.findName(),
+            Email: faker.internet.email(),
+            Ciudad: faker.address.city(),
+            Salario: faker.finance.amount(),
+          })
+        }
+        return body
+    }
+    getEncabezadosReporte(){
+        // return ['ID','Nombre','Email','Ciudad','Salario']
+        return [{ ID:'ID',Nombre:'Nombre',Email:'Email',Ciudad:'Ciudad',Salario:'Salario'}]
+    }
+
+
+    getDataOrders(){
+        let orders: any[] = [
+            { 
+                id: 1 , total: 230, placed: new Date(2017,12,1), fulfilled: new Date(2017,12,2),
+                customer: { id: 1, name: 'Main St Bakery', state: 'CO', email: 'email@example.com' },
+            },
+            { 
+                id: 2 , total: 230, placed: new Date(2017,12,1), fulfilled: new Date(2017,12,2),
+                customer: { id: 1, name: 'Main St Bakery', state: 'CO', email: 'email@example.com' },
+            },
+            { 
+                id: 3 , total: 230, placed: new Date(2017,12,1), fulfilled: new Date(2017,12,2),
+                customer: { id: 1, name: 'Main St Bakery', state: 'CO', email: 'email@example.com' },
+            },
+            { 
+                id: 4 , total: 230, placed: new Date(2017,12,1), fulfilled: new Date(2017,12,2),
+                customer: { id: 1, name: 'Main St Bakery', state: 'CO', email: 'email@example.com' },
+            },
+            { 
+                id: 5 , total: 230, placed: new Date(2017,12,1), fulfilled: new Date(2017,12,2),
+                customer: { id: 1, name: 'Main St Bakery', state: 'CO', email: 'email@example.com' },
+            },
+        ]
+        return orders;
+    }
 }

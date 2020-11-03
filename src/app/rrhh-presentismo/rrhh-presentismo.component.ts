@@ -18,6 +18,8 @@ export interface Task {
 })
 export class RrhhPresentismoComponent implements OnInit {
 
+    listDatos:any[]=[];
+
     constructor(
         public commonService:CommonService
     ) {
@@ -30,8 +32,6 @@ export class RrhhPresentismoComponent implements OnInit {
         this.reloadDatos(0);
     }
 
-
-    listDatos:any[]=[];
 
     reloadDatos(count:number){
         this.listDatos = this.commonService.generarDatosRandomPresentismo(count);

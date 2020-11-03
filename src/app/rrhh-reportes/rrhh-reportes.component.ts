@@ -13,6 +13,7 @@ interface jsPDFWithPlugin extends jsPDF {
 }
 
 import faker from 'faker';
+import { CommonService } from 'app/services/common.service';
 
 //------------------------------------------------------------------
 
@@ -24,60 +25,91 @@ import faker from 'faker';
 })
 export class RrhhReportesComponent implements OnInit {
 
-    orders: any[] = [
-        { 
-            id: 1 , total: 230, placed: new Date(2017,12,1), fulfilled: new Date(2017,12,2),
-            customer: { id: 1, name: 'Main St Bakery', state: 'CO', email: 'email@example.com' },
-        },
-        { 
-            id: 2 , total: 230, placed: new Date(2017,12,1), fulfilled: new Date(2017,12,2),
-            customer: { id: 1, name: 'Main St Bakery', state: 'CO', email: 'email@example.com' },
-        },
-        { 
-            id: 3 , total: 230, placed: new Date(2017,12,1), fulfilled: new Date(2017,12,2),
-            customer: { id: 1, name: 'Main St Bakery', state: 'CO', email: 'email@example.com' },
-        },
-        { 
-            id: 4 , total: 230, placed: new Date(2017,12,1), fulfilled: new Date(2017,12,2),
-            customer: { id: 1, name: 'Main St Bakery', state: 'CO', email: 'email@example.com' },
-        },
-        { 
-            id: 5 , total: 230, placed: new Date(2017,12,1), fulfilled: new Date(2017,12,2),
-            customer: { id: 1, name: 'Main St Bakery', state: 'CO', email: 'email@example.com' },
-        },
-    ]
+    listDatos:any[]=[];
 
-    constructor() { }
+    listEncabezados:string[] = Object.keys( this.commonService.getEncabezadosReporte()[0] );
+    // listEncabezados:string[]= this.commonService.getEncabezadosReporte();
 
-//-------------------------------------------------------------------------------------------
-coll:any;
-animatedCollapsible(){
-    this.coll = document.getElementsByClassName("collapsible reportes");
+    reporteSeleccionado:string;
+    listReportes:string[]=[];
 
-    for (let i = 0; i < this.coll.length; i++) {
-        this.coll[i].addEventListener("click", function() {
-        this.classList.toggle("activeColapsible");
-        var content = this.nextElementSibling;
-        // console.log(content.style.maxHeight)
-        if (content.style.maxHeight && !this.deplegarSiempre){
-            content.style.maxHeight = null;
-        } else {
-            content.style.maxHeight = content.scrollHeight + "px";
-        } 
-      });
+    constructor(
+        public commonService:CommonService
+    ) { }
+
+
+    
+    initPage:any;
+    ngOnInit(): void {
+        this.initPage = document.getElementById('initPage');
+
+        this.reloadDatos(0);
+
+        this.listReportes = ['Reporte1','Reporte2','Reporte3']
     }
-}
-//-------------------------------------------------------------------------------------------
-initPage:any;
-ngOnInit(): void {
-    this.initPage = document.getElementById('initPage');
-    this.animatedCollapsible();
-}
+
+    reloadDatos(count:number){
+        this.listDatos = this.commonService.generarDatosRandomReporte(count);
+    }
+
+    buscar(){
+        this.reloadDatos(10);
+    }
+
+    limpiar(){
+        this.listDatos = [];
+    }
+
+
+
 //-------------------------------------------------------------------------------------------
 
+    exportarPDF(idTable:string){
+
+        let table = document.getElementById(idTable);
+        console.log(this.reporteSeleccionado, table)
+
+
+        const doc = new jsPDF('portrait', 'px', 'a4') as jsPDFWithPlugin;
+
+        doc.setFontSize(18)
+        doc.text(this.reporteSeleccionado, 14, 30)
+        doc.setFontSize(11)
+        doc.setTextColor(100)
+      
+        // jsPDF 1.4+ uses getWidth, <1.4 uses .width
+        var pageSize = doc.internal.pageSize
+        var pageWidth = pageSize.width ? pageSize.width : pageSize.getWidth()
+
+           
+        var lorem = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae voluptatem veniam reprehenderit delectus, possimus quidem soluta odio! Fugit corporis aspernatur magnam, nisi laborum dolor illo voluptate temporibus nobis rem aperiam!"
+        var text = doc.splitTextToSize(lorem, pageWidth - 25, {})
+        doc.text(text, 14, 40)
+
+        doc.autoTable({
+            head: this.commonService.getEncabezadosReporte(),
+            body: this.listDatos,
+            startY: 70,
+            showHead: 'firstPage',
+        });
+
+        //Property 'lastAutoTable' does not exist on type 'jsPDF'.
+        //Recibe este error porque Typecript es un lenguaje fuertemente tipado y lastAutoTable no está definido en el archivo index.d.ts (en el módulo de nodo jsPdf).
+        // doc.text(text, 14, doc.lastAutoTable.finalY + 10)
+
+        let finalY = (doc as any).lastAutoTable.finalY;
+        console.log(finalY)
+
+        doc.text('TheFourtin®', 14, finalY + 30)
+
+        doc.save(`G14_Reporte_${this.reporteSeleccionado}.pdf`)
+
+    }   
 
 
     headRows() {
+
+        
         return [
           { id: 'ID', name: 'Name', email: 'Email', city: 'City', expenses: 'Sum' },
         ]
@@ -134,7 +166,7 @@ ngOnInit(): void {
 
         doc.text(text, 14, finalY + 10)
 
-        doc.save('bitchis.pdf')
+        doc.save('G14.pdf')
     }
 
 }

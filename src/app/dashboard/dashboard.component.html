@@ -16,28 +16,31 @@
         <img src="assets/img/main-image.jpg" class="img-fluid rounded block" alt="Responsive image" style="width:80%;">
     </div> -->
 
+    
     <div class="card-block center">
         <div class="card text-center" >
             <div class="card-body">
-            <h5 class="card-title">
-                Universidad Tecnológica Nacional
-                <br>
-                Tecnicatura Universitaria en Programación
-            </h5>
-            <h6 class="card-subtitle mb-2 text-muted">
-                2W2 - Metodología de Sistemas I
-            </h6>
-            <p class="card-text">
-                TPI SuperMami RRHH !!
-            </p>
-            <!-- <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a> -->
-            <p class="text-left">Docentes</p>
-            <ul class="text-left">
-                <li>Santoro, Exequiel</li>
-                <li>Garay, Martin</li>
-                <li>Pérez, Rita</li>
-            </ul>
+                <h2 class="card-title">
+                    Universidad Tecnológica Nacional
+                    <br>
+                    Tecnicatura Universitaria en Programación
+                </h2>
+                <hr>
+                <h3 class="card-subtitle mb-2 text-muted">
+                    2W2 - Metodología de Sistemas I
+                </h3>
+                <h3 class="card-text">
+                    TPI SuperMami RRHH !!
+                </h3>
+                <!-- <a href="#" class="card-link">Card link</a>
+                <a href="#" class="card-link">Another link</a> -->
+                <hr>
+                <div class="row">
+                    <div class="col-md-3" *ngFor="let item of docentes">
+                        {{ item }}
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -47,27 +50,31 @@
     <div class="row bgimg">
         <div *ngFor="let integrante of mamiService.ListIntegrantes" class="col-md-6 ">
 
-            <div class="card card-profile bg-transparent" style="text-shadow: 2px 4px 3px rgba(0,0,0,0.3);">
+            <!-- bg-transparent -->
+            <div class="card card-profile " style="text-shadow: 2px 4px 3px rgba(0,0,0,0.3);">
                 <div class="card-avatar ">
                     <a href="javascript:void(0)">
                         <img class="img" [src]="integrante.imagen" />
                     </a>
                 </div>
                 <div class="card-body " >
-                    <h3 class="card-category text-danger" >
-                        <span style="background-color: black; border-radius: 20px; padding: 5px; ">
+                    <h3 class="card-category text-primary" >
+                        {{ integrante.rolScrum }}
+                        <!-- <span style="background-color: black; border-radius: 20px; padding: 5px; ">
                             {{ integrante.rolScrum }}
-                        </span>
+                        </span> -->
                     </h3>
                     <h4 class="card-title text-danger " >
-                        <span style="background-color: black; border-radius: 10px; padding: 5px; ">
+                        {{ integrante.nombre }}
+                        <!-- <span style="background-color: black; border-radius: 10px; padding: 5px; ">
                             {{ integrante.nombre }}
-                        </span>
+                        </span> -->
                     </h4>
                     <h5>
-                        <span class="card-description" style="background-color: black; border-radius: 5px; padding: 5px; " >
+                        {{ integrante.descripcion }}
+                        <!-- <span class="card-description" style="background-color: black; border-radius: 5px; padding: 5px; " >
                             {{ integrante.descripcion }}
-                        </span>
+                        </span> -->
                     </h5>
                     <!-- <a href="javascript:void(0)" class="btn btn-primary btn-round">
                         Follow
@@ -80,12 +87,12 @@
 
 
 
-    <mat-grid-list cols="2" rowHeight="2:1">
+    <!-- <mat-grid-list cols="2" rowHeight="2:1">
         <mat-grid-tile [style.background]="'lightblue'">1</mat-grid-tile>
         <mat-grid-tile [style.background]="'lightgreen'">2</mat-grid-tile>
         <mat-grid-tile [style.background]="'lightpink'">3</mat-grid-tile>
         <mat-grid-tile [style.background]="'#DDBDF1'">4</mat-grid-tile>
-    </mat-grid-list>
+    </mat-grid-list> -->
       
     <mat-grid-list cols="4" rowHeight="100px">
     <mat-grid-tile
