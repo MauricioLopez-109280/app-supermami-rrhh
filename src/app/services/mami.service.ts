@@ -9,6 +9,7 @@ import { EmpleadoModel } from 'app/models/empleado.model';
 
 
 import Swal from 'sweetalert2';
+import { IntegranteModel } from 'app/models/integrante.model';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ import Swal from 'sweetalert2';
 export class MamiService {
 
     ListEmpleados:EmpleadoModel[] = [];
-    ListIntegrantes:EmpleadoModel[] = [];
+    ListIntegrantes:IntegranteModel[] = [];
 
     private firebaseURL = 'https://angular-supermami-rrhh.firebaseio.com/';
     private firebaseCollection = 'empleados';
@@ -28,29 +29,47 @@ export class MamiService {
     }
 
 
-    public loadIntegrantes():EmpleadoModel[]{
+
+
+    public loadIntegrantes():IntegranteModel[]{
         this.ListIntegrantes = [];
 
 
         this.ListIntegrantes.push( 
-            new EmpleadoModel('Blanco','Carolina', '110668@tecnicatura.frc.utn.edu.ar', 110668) 
-        );
-        this.ListIntegrantes.push( 
-            new EmpleadoModel('Maldonado','Santiago', '110352@tecnicatura.frc.utn.edu.ar', 110352, 
-            'https://media-exp1.licdn.com/dms/image/C4E03AQH0hbNPvgG8Tw/profile-displayphoto-shrink_200_200/0?e=1609977600&v=beta&t=edxJs71Nn2TGWOSiRyDKGAgha9AQ1m0EsJEDbuet_zs'
+            new IntegranteModel('Blanco','Carolina','QA', '110668@tecnicatura.frc.utn.edu.ar', 110668,
+            'assets/img/avatar-fem.jpg',
+            'Hola soy caro'
             ) 
         );
         this.ListIntegrantes.push( 
-            new EmpleadoModel('Lovecchio','Matías', '110437@tecnicatura.frc.utn.edu.ar', 110437) 
+            new IntegranteModel('Maldonado','Santiago', 'Scrum Master', '110352@tecnicatura.frc.utn.edu.ar', 110352, 
+            'https://media-exp1.licdn.com/dms/image/C4E03AQH0hbNPvgG8Tw/profile-displayphoto-shrink_200_200/0?e=1609977600&v=beta&t=edxJs71Nn2TGWOSiRyDKGAgha9AQ1m0EsJEDbuet_zs',
+            'Mi pasion es dejar comentarios en google review'
+            ) 
         );
         this.ListIntegrantes.push( 
-            new EmpleadoModel('Balsamo','Franco', '109921@tecnicatura.frc.utn.edu.ar', 109921) 
+            new IntegranteModel('Lovecchio','Matías', 'Backend Developer', '110437@tecnicatura.frc.utn.edu.ar', 110437,
+            'assets/img/avatar-masc.png',
+            'Hola soy Mati'
+            ) 
         );
         this.ListIntegrantes.push( 
-            new EmpleadoModel('Pucheta','Ignacio', '110962@tecnicatura.frc.utn.edu.ar', 110962) 
+            new IntegranteModel('Balsamo','Franco', 'DBA', '109921@tecnicatura.frc.utn.edu.ar', 109921,
+            'assets/img/avatar-masc.png',
+            'Hola soy franco, el amigo de santoro'
+            ) 
         );
         this.ListIntegrantes.push( 
-            new EmpleadoModel('Lopez','Mauricio', '109280@tecnicatura.frc.utn.edu.ar', 109280) 
+            new IntegranteModel('Pucheta','Ignacio', 'Frontend Developer', '110962@tecnicatura.frc.utn.edu.ar', 110962,
+            'assets/img/avatar-masc.png',
+            'Hola soy ignacio'
+            ) 
+        );
+        this.ListIntegrantes.push( 
+            new IntegranteModel('Lopez','Mauricio', 'Backend Developer', '109280@tecnicatura.frc.utn.edu.ar', 109280,
+            'assets/img/avatar-masc.png',
+            'Hola soy mauri'
+            ) 
         );
 
 

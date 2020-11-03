@@ -1,5 +1,58 @@
+
+<!-- <div class="container">
+    <img src="assets/img/main-image.jpg" alt="Snow" style="width:100%;">
+    <div class="bottom-left">Bottom Left</div>
+    <div class="top-left">Top Left</div>
+    <div class="top-right">Top Right</div>
+    <div class="bottom-right">Bottom Right</div>
+    <div class="centered">Centered</div>
+  </div> 
+-->
+
 <div class="main-content">
   <div class="container-fluid">
+
+    <!-- <div class="text-center">
+        <img src="assets/img/main-image.jpg" class="img-fluid rounded block" alt="Responsive image" style="width:80%;">
+    </div> -->
+
+    <div class="row bgimg">
+        <div *ngFor="let integrante of mamiService.ListIntegrantes" class="col-md-6 ">
+
+            <div class="card card-profile bg-transparent" style="text-shadow: 2px 4px 3px rgba(0,0,0,0.3);">
+                <div class="card-avatar ">
+                    <a href="javascript:void(0)">
+                        <img class="img" [src]="integrante.imagen" />
+                    </a>
+                </div>
+                <div class="card-body " >
+                    <h3 class="card-category text-danger" >
+                        <span style="background-color: black; border-radius: 20px; padding: 5px; ">
+                            {{ integrante.rolScrum }}
+                        </span>
+                    </h3>
+                    <h4 class="card-title text-danger " >
+                        <span style="background-color: black; border-radius: 10px; padding: 5px; ">
+                            {{ integrante.nombre }}
+                        </span>
+                    </h4>
+                    <h5>
+                        <span class="card-description" style="background-color: black; border-radius: 5px; padding: 5px; " >
+                            {{ integrante.descripcion }}
+                        </span>
+                    </h5>
+                    <!-- <a href="javascript:void(0)" class="btn btn-primary btn-round">
+                        Follow
+                    </a> -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+<!--
       <div class="row">
           <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="card card-stats">
@@ -411,5 +464,9 @@
               </div>
           </div>
       </div>
+-->
+
+
   </div>
 </div>
+

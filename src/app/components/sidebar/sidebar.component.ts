@@ -21,7 +21,7 @@ export const ROUTES: RouteInfo[] = [
 ];
 */
 export const ROUTES: RouteInfo[] = [
-    // { path: '/dashboard', title: 'Dashboard',  icon: 'dashboard', class: '' },
+    { path: '/dashboard', title: 'Dashboard',  icon: 'dashboard', class: '' },
     { path: '/rrhh-empleados', title: 'Empleados',  icon:'person', class: '' },
     { path: '/rrhh-licencias', title: 'Licencias',  icon:'content_paste', class: '' },
     { path: '/rrhh-presentismo', title: 'Presentismo',  icon:'pending_actions', class: '' }, //grading

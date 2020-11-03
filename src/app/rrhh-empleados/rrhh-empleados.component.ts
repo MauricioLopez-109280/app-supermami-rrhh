@@ -29,7 +29,7 @@ export class RrhhEmpleadosComponent implements OnInit {
     last = new EmpleadoModel();
     loading = false;
     starting = false;
-
+    initPage:any;
     crearEditarIsOpen = true;
     consultarIsOpen = true;
 
@@ -39,8 +39,34 @@ export class RrhhEmpleadosComponent implements OnInit {
         private toastr: ToastrService
     ) { }
 
+
+    coll:any;
+    animatedCollapsible(){
+        this.coll = document.getElementsByClassName("collapsible");
+
+        for (let i = 0; i < this.coll.length; i++) {
+
+            this.coll[i].addEventListener("click", function() {
+
+            this.classList.toggle("activeColapsible");
+            var content = this.nextElementSibling;
+
+            // console.log(content.style.maxHeight)
+
+            if (content.style.maxHeight && !this.deplegarSiempre){
+              content.style.maxHeight = null;
+            } else {
+              content.style.maxHeight = content.scrollHeight + "px";
+            } 
+
+          });
+        }
+    }
+
     ngOnInit(): void {
         this.loadEmpleados();
+        this.animatedCollapsible();
+        this.initPage = document.getElementById('initPage');
     }
 
     ngAfterViewInit(): void {
@@ -48,12 +74,12 @@ export class RrhhEmpleadosComponent implements OnInit {
         // this.consultarIsOpen = false;
     }
 
-    closeDiv(idDiv:string,strTipoDiv:string){
+    openCloseDiv(idDiv:string,strTipoDiv:string,open:boolean=false){
         let div = document.getElementById(idDiv);
 
         let tipoDiv:EnumTipoDiv = EnumTipoDiv[strTipoDiv];
 
-        if(div.style.display=='none'){
+        if(div.style.display=='none' || open){
 
             div.style.display = ''
 
@@ -149,9 +175,17 @@ export class RrhhEmpleadosComponent implements OnInit {
 
     }
 
+    
     editarEmpleado( empleado:EmpleadoModel , indexLocal:number ){
+
+        // this.deplegarSiempre = true;
+        // this.coll[0].click();
+        // this.deplegarSiempre = false;
+
+        this.initPage.scrollIntoView();
+
         this.empleado = empleado;
-        this.closeDiv('CrearEditarEmpleado','CREAR_EDITAR')
+        this.openCloseDiv('CrearEditarEmpleado','CREAR_EDITAR',true)
     }
 
     hasModifications(){
@@ -252,7 +286,7 @@ export class RrhhEmpleadosComponent implements OnInit {
                 this.clean();
                 form.reset();
 
-                this.closeDiv('CrearEditarEmpleado','CREAR_EDITAR')
+                this.openCloseDiv('CrearEditarEmpleado','CREAR_EDITAR',false)
 
             });
 
