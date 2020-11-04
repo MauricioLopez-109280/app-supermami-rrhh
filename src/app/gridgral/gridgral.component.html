@@ -85,7 +85,7 @@
                                         </ng-container>
                                         <ng-template #elseTemplate>
 
-                                            <ng-container *ngIf="encabezado=='empleados'; else elseTemplate">
+                                            <ng-container *ngIf="encabezado.toUpperCase()=='EMPLEADOS'; else elseTemplate">
                                                 
                                                 <mat-form-field appearance="fill" >
                                                     <mat-label> empleados </mat-label>
