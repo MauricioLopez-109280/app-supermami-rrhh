@@ -21,7 +21,7 @@ var EmpleadoModel = /** @class */ (function () {
         if (domicilio === void 0) { domicilio = ''; }
         if (sueldo === void 0) { sueldo = 0; }
         if (activo === void 0) { activo = true; }
-        this.id = '';
+        this.id = null;
         this.Apellido = apellido;
         this.Nombre = nombre;
         this.DNI = dni;
@@ -91,6 +91,7 @@ var IntegranteModel = /** @class */ (function () {
         if (imagen === void 0) { imagen = ''; }
         if (descripcion === void 0) { descripcion = ''; }
         if (curso === void 0) { curso = '2W2'; }
+        this.id = null;
         this.nombre = nombre;
         this.apellido = apellido;
         this.rolScrum = rolScrum;
@@ -166,7 +167,7 @@ var environment = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvbmF2YmFyL25hdmJhci5jb21wb25lbnQuY3NzIn0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("\r\n.navbar {\r\n\r\n    /* background: rgb(255,255,255);\r\n    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 0%, rgba(20,22,7,1) 86%); */\r\n\r\n    /* background: #191919 !important; */\r\n\r\n}\r\n\r\n.navbar-brand {\r\n    color: purple;\r\n    text-shadow: 2px 2px #b05bff;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9uYXZiYXIvbmF2YmFyLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUNBOztJQUVJOytHQUMyRzs7SUFFM0csb0NBQW9DOztBQUV4Qzs7QUFFQTtJQUNJLGFBQWE7SUFDYiw0QkFBNEI7QUFDaEMiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL25hdmJhci9uYXZiYXIuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIlxyXG4ubmF2YmFyIHtcclxuXHJcbiAgICAvKiBiYWNrZ3JvdW5kOiByZ2IoMjU1LDI1NSwyNTUpO1xyXG4gICAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KDE4MGRlZywgcmdiYSgyNTUsMjU1LDI1NSwxKSAwJSwgcmdiYSgyNTUsMjU1LDI1NSwxKSAwJSwgcmdiYSgyMCwyMiw3LDEpIDg2JSk7ICovXHJcblxyXG4gICAgLyogYmFja2dyb3VuZDogIzE5MTkxOSAhaW1wb3J0YW50OyAqL1xyXG5cclxufVxyXG5cclxuLm5hdmJhci1icmFuZCB7XHJcbiAgICBjb2xvcjogcHVycGxlO1xyXG4gICAgdGV4dC1zaGFkb3c6IDJweCAycHggI2IwNWJmZjtcclxufSJdfQ== */");
 
 /***/ }),
 
