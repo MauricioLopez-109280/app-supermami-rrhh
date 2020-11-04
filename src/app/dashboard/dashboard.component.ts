@@ -30,11 +30,11 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {}
 
   tiles: Tile[] = [
-        {text: 'G14 - Fourtin Group !!', cols: 4, rows: 1, color: 'lightgreen'},
-        {text: 'Compromiso', cols: 3, rows: 1, color: 'lightblue'},
+        {text: 'G14 - Fourtin Group !!', cols: 4, rows: 1, color: '#33FF9F'},
+        {text: 'Compromiso', cols: 3, rows: 1, color: '#ABE6FC'},
         {text: 'Valor', cols: 1, rows: 2, color: 'lightgreen'},
-        {text: 'Foco', cols: 1, rows: 2, color: 'lightgreen'},
-        {text: 'Apertura', cols: 2, rows: 1, color: '#DDBDF1'},
+        {text: 'Foco', cols: 1, rows: 2, color: '#CAAEF8'},
+        {text: 'Apertura', cols: 2, rows: 1, color: '#F2E482'},
         {text: 'Respeto', cols: 3, rows: 1, color: 'lightpink'},
     ];
 

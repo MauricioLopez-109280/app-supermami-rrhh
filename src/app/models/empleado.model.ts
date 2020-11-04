@@ -24,7 +24,7 @@ export class EmpleadoModel {
         sueldo:number = 0, 
         activo:boolean = true
     ){
-        this.id = '';
+        this.id = null;
         this.Apellido = apellido;
         this.Nombre = nombre;
         this.DNI = dni;

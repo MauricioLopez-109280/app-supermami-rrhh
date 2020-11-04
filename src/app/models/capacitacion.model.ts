@@ -3,12 +3,12 @@ import { EmpleadoModel } from "./empleado.model";
 export class CapacitacionModel {
 
     id:string;
-    nombre: string;
-    tema:string;
-    fechaInicio:Date;
-    fechaFin:Date;
+    Nombre: string;
+    Tema:string;
+    FechaInicio:Date;
+    FechaFin:Date;
     activo: boolean;
-    empleados:EmpleadoModel[];
+    Empleados:EmpleadoModel[];
 
     constructor(
         nombre: string = '',
@@ -18,12 +18,12 @@ export class CapacitacionModel {
         activo:boolean = true
     ){
         this.id = null;
-        this.nombre = nombre;
-        this.tema = tema;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
+        this.Nombre = nombre;
+        this.Tema = tema;
+        this.FechaInicio = fechaInicio;
+        this.FechaFin = fechaFin;
         this.activo = activo;
-        this.empleados=[];
+        this.Empleados=[];
     }
 
 

@@ -1,0 +1,14 @@
+
+.navbar {
+
+    /* background: rgb(255,255,255);
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 0%, rgba(20,22,7,1) 86%); */
+
+    /* background: #191919 !important; */
+
+}
+
+.navbar-brand {
+    color: purple;
+    text-shadow: 2px 2px #b05bff;
+}

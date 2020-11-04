@@ -84,10 +84,12 @@ export class CommonService {
 
     generarDatosRandomReporte(count:number=10){
 
+        let random = faker.random.number({min: count,max: count*2});
+
         var body = []
-        for (var j = 1; j <= count; j++) {
+        for (var i = 1; i <= random; i++) {
           body.push({
-            ID: j,
+            ID: i,
             Nombre: faker.name.findName(),
             Email: faker.internet.email(),
             Ciudad: faker.address.city(),

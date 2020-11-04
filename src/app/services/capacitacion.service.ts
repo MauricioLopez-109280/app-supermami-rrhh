@@ -92,7 +92,7 @@ export class CapacitacionService {
 
     deleteConfirm( objeto:CapacitacionModel){
         return Swal.fire({
-            title: `${ objeto.id } - ${objeto.nombre} ` ,
+            title: `${ objeto.id } - ${objeto.Nombre} ` ,
             text: `Desea eliminar la capacitacion ?`,
             icon: 'error',
             showConfirmButton: true,
@@ -105,7 +105,7 @@ export class CapacitacionService {
         let message = objeto.activo ? 'dar de BAJA' : 'dar de ALTA';
 
         return Swal.fire({
-            title: objeto.nombre,
+            title: objeto.Nombre,
             text: `Esta seguro que desea ${message} la capacitacion ?`,
             icon: objeto.activo ? 'error' : 'warning',
             showConfirmButton: true,

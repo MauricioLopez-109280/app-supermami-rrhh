@@ -16,6 +16,7 @@ export class IntegranteModel {
     descripcion: string;
 
     constructor(apellido: string = '', nombre: string = '',rolScrum:string='',email:string='', legajo: number = 0, imagen:string='',descripcion:string='', curso:string='2W2'){
+        this.id = null;
         this.nombre = nombre;
         this.apellido = apellido;
         this.rolScrum = rolScrum;

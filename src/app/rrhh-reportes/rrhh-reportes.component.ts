@@ -14,6 +14,7 @@ interface jsPDFWithPlugin extends jsPDF {
 
 import faker from 'faker';
 import { CommonService } from 'app/services/common.service';
+import { Router } from '@angular/router';
 
 //------------------------------------------------------------------
 
@@ -34,7 +35,8 @@ export class RrhhReportesComponent implements OnInit {
     listReportes:string[]=[];
 
     constructor(
-        public commonService:CommonService
+        public commonService:CommonService,
+        private router:Router
     ) { }
 
 
@@ -80,16 +82,25 @@ export class RrhhReportesComponent implements OnInit {
         // jsPDF 1.4+ uses getWidth, <1.4 uses .width
         var pageSize = doc.internal.pageSize
         var pageWidth = pageSize.width ? pageSize.width : pageSize.getWidth()
+        
 
-           
-        var lorem = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae voluptatem veniam reprehenderit delectus, possimus quidem soluta odio! Fugit corporis aspernatur magnam, nisi laborum dolor illo voluptate temporibus nobis rem aperiam!"
+        // var lorem = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae voluptatem veniam reprehenderit delectus, possimus quidem soluta odio! Fugit corporis aspernatur magnam, nisi laborum dolor illo voluptate temporibus nobis rem aperiam!"
+        var lorem = /*html*/`
+        - Universidad Tecnológica Nacional
+        - Tecnicatura Universitaria en Programación
+        - 2W2 - Metodología de Sistemas I
+        - TPI SuperMami RRHH !!
+        - Docentes: Santoro, Exequiel - Garay, Martin - Pérez, Rita
+        `;
+        doc.setTextColor(165, 0, 0);  
         var text = doc.splitTextToSize(lorem, pageWidth - 25, {})
         doc.text(text, 14, 40)
+        
 
         doc.autoTable({
             head: this.commonService.getEncabezadosReporte(),
             body: this.listDatos,
-            startY: 70,
+            startY: 100,
             showHead: 'firstPage',
         });
 
@@ -100,16 +111,25 @@ export class RrhhReportesComponent implements OnInit {
         let finalY = (doc as any).lastAutoTable.finalY;
         console.log(finalY)
 
-        doc.text('TheFourtin®', 14, finalY + 30)
+        doc.text(`
+        * Grupo 14 - Fourtin ®
+        
+        * 2w2 - 110668 - Blanco, Carolina
+        * 2w2 - 110352 - Maldonado, Santiago
+        * 2w2 - 110437 - Lovecchio, Matías
+        * 2w2 - 109921 - Balsamo, Franco
+        * 2W2 - 110962 - Pucheta, Ignacio
+        * 2w2 - 109280 - Lopez, Mauricio
+        `, 14, finalY + 30)
 
-        doc.save(`G14_Reporte_${this.reporteSeleccionado}.pdf`)
+        //doc.save(`G14_Reporte_${this.reporteSeleccionado}.pdf`)
+
+        doc.output('dataurlnewwindow');
 
     }   
 
 
-    headRows() {
-
-        
+    headRows() {        
         return [
           { id: 'ID', name: 'Name', email: 'Email', city: 'City', expenses: 'Sum' },
         ]

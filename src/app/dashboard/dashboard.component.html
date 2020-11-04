@@ -52,7 +52,7 @@
 
             <!-- bg-transparent -->
             <div class="card card-profile " style="text-shadow: 2px 4px 3px rgba(0,0,0,0.3);">
-                <div class="card-avatar ">
+                <div class="card-avatar " >
                     <a href="javascript:void(0)">
                         <img class="img" [src]="integrante.imagen" />
                     </a>
@@ -71,6 +71,8 @@
                         </span> -->
                     </h4>
                     <h5>
+                        {{ integrante.email }}
+                        <br>
                         {{ integrante.descripcion }}
                         <!-- <span class="card-description" style="background-color: black; border-radius: 5px; padding: 5px; " >
                             {{ integrante.descripcion }}

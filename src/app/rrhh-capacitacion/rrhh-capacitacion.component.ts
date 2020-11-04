@@ -97,15 +97,15 @@ clean(){
     loadFieldsForm(){
 
         this.fieldsForm.push({ key:'id' , type:'string', comboValues:null , collection:null });
-        this.fieldsForm.push({ key:'nombre' , type:'string', comboValues:null , collection:null });
-        this.fieldsForm.push({ key:'tema' , type:'combo', comboValues:['Angular','Vue','React','Node','MongoDB','Scrum'] , collection:null});
+        this.fieldsForm.push({ key:'Nombre' , type:'string', comboValues:null , collection:null });
+        this.fieldsForm.push({ key:'Tema' , type:'combo', comboValues:['Angular','Vue','React','Node','MongoDB','Scrum'] , collection:null});
 
-        this.fieldsForm.push({ key:'fechaInicio' , type:'date', comboValues:null, collection:null });
-        this.fieldsForm.push({ key:'fechaFin' , type:'date', comboValues:null, collection:null });
+        this.fieldsForm.push({ key:'FechaInicio' , type:'date', comboValues:null, collection:null });
+        this.fieldsForm.push({ key:'FechaFin' , type:'date', comboValues:null, collection:null });
 
         this.fieldsForm.push({ key:'activo' , type:'boolean', comboValues:null , collection:null});
 
-        this.fieldsForm.push({ key:'empleados' , type:'collection-empleados', comboValues:null , collection:null });
+        this.fieldsForm.push({ key:'Empleados' , type:'collection-empleados', comboValues:null , collection:null });
 
     }
 
@@ -196,7 +196,7 @@ clean(){
 
             if(messaje==='created'){
                 this.toastr.success(
-                    `capacitacion ${ objeto.nombre } fue creada`, 
+                    `capacitacion ${ objeto.Nombre } fue creada`, 
                     "Notification",
                     {
                         closeButton: true,
@@ -207,7 +207,7 @@ clean(){
             }
             else if(messaje==='updated'){
                 this.toastr.warning(
-                    `capacitacion ${ objeto.nombre } fue modificada`, 
+                    `capacitacion ${ objeto.Nombre } fue modificada`, 
                     "Notification",
                     {
                         closeButton: true,
@@ -267,7 +267,7 @@ clean(){
                     this.capacitacionService.update(objeto)
                         .subscribe( resp => {
                             
-                            let message = `La capacitacion <strong> ${ objeto.id }, ${ objeto.nombre }</strong><br> ha sido dado de`;
+                            let message = `La capacitacion <strong> ${ objeto.id }, ${ objeto.Nombre }</strong><br> ha sido dado de`;
                             
                             if(!objeto.activo){
                                 this.toastr.error(
