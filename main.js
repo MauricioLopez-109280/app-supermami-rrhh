@@ -11,33 +11,30 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EmpleadoModel", function() { return EmpleadoModel; });
 var EmpleadoModel = /** @class */ (function () {
-    function EmpleadoModel(apellido, nombre, dni, cuit, nacimiento, email, legajo, nacionalidad, domicilio, imagen, activo) {
+    function EmpleadoModel(apellido, nombre, dni, cuit, fechaNacimiento, nacionalidad, domicilio, sueldo, activo) {
         if (apellido === void 0) { apellido = ''; }
         if (nombre === void 0) { nombre = ''; }
         if (dni === void 0) { dni = 0; }
         if (cuit === void 0) { cuit = 0; }
-        if (nacimiento === void 0) { nacimiento = 0; }
-        if (email === void 0) { email = ''; }
-        if (legajo === void 0) { legajo = 0; }
+        if (fechaNacimiento === void 0) { fechaNacimiento = null; }
         if (nacionalidad === void 0) { nacionalidad = ''; }
         if (domicilio === void 0) { domicilio = ''; }
-        if (imagen === void 0) { imagen = ''; }
+        if (sueldo === void 0) { sueldo = 0; }
         if (activo === void 0) { activo = true; }
         this.id = '';
-        this.apellido = apellido;
-        this.nombre = nombre;
-        this.dni = dni;
-        this.cuit = cuit;
-        this.nacimiento = nacimiento;
-        this.email = email;
-        this.legajo = legajo;
-        this.nacionalidad = nacionalidad;
-        this.domicilio = domicilio;
-        this.imagen = imagen;
+        this.Apellido = apellido;
+        this.Nombre = nombre;
+        this.DNI = dni;
+        this.CUIT = cuit;
+        this.FechaNacimiento = fechaNacimiento;
+        this.Nacionalidad = nacionalidad;
+        this.Domicilio = nacionalidad;
+        this.Telefono = domicilio;
+        this.Sueldo = sueldo;
         this.activo = activo;
     }
     EmpleadoModel.prototype.getFullName = function () {
-        return this.cuit + " -  " + this.apellido + ", " + this.nombre;
+        return this.Apellido + ", " + this.Nombre;
     };
     EmpleadoModel.prototype.getEstado = function () {
         return this.activo ? 'ACTIVO' : 'BAJA';
@@ -255,7 +252,7 @@ var MamiService = /** @class */ (function () {
     MamiService.prototype.cambiarEstadoEmpleadoConfirm = function (empleado) {
         var message = empleado.activo ? 'dar de BAJA' : 'dar de ALTA';
         return sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire({
-            title: empleado.nombre,
+            title: empleado.Nombre,
             text: "Esta seguro que desea " + message + " al empleado ?",
             icon: empleado.activo ? 'error' : 'warning',
             showConfirmButton: true,
