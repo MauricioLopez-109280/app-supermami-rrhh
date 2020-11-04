@@ -15,7 +15,7 @@ export class CommonService {
 
     formatObjeto(objeto:any){
 
-        return `${objeto.apellido}, ${objeto.nombre}`;
+        return `${objeto.Apellido}, ${objeto.Nombre}`;
         
     }
     
