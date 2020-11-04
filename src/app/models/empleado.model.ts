@@ -2,16 +2,15 @@
 export class EmpleadoModel {
 
     id:string;
-    apellido: string;
-    nombre: string;
-    dni:number;
-    cuit:number;
-    nacimiento:number;
-    email:string;
-    legajo: number;
-    nacionalidad:string;
-    domicilio:string;
-    imagen: string;
+    Apellido: string;
+    Nombre: string;
+    DNI:number;
+    CUIT:number;
+    FechaNacimiento:Date;
+    Nacionalidad:string;
+    Domicilio:string;
+    Telefono: string;
+    Sueldo:number;
     activo: boolean;
 
     constructor(
@@ -19,30 +18,27 @@ export class EmpleadoModel {
         nombre: string = '',
         dni:number = 0,
         cuit:number = 0,
-        nacimiento:number = 0,
-        email:string = '', 
-        legajo: number = 0, 
-        nacionalidad:string = '',
+        fechaNacimiento:Date = null,
+        nacionalidad:string = '', 
         domicilio:string = '',
-        imagen:string = '', 
+        sueldo:number = 0, 
         activo:boolean = true
     ){
         this.id = '';
-        this.apellido = apellido;
-        this.nombre = nombre;
-        this.dni = dni;
-        this.cuit = cuit;
-        this.nacimiento = nacimiento;
-        this.email = email;
-        this.legajo = legajo;
-        this.nacionalidad = nacionalidad;
-        this.domicilio = domicilio;
-        this.imagen = imagen;
+        this.Apellido = apellido;
+        this.Nombre = nombre;
+        this.DNI = dni;
+        this.CUIT = cuit;
+        this.FechaNacimiento = fechaNacimiento;
+        this.Nacionalidad = nacionalidad;
+        this.Domicilio = nacionalidad;
+        this.Telefono = domicilio;
+        this.Sueldo = sueldo;
         this.activo = activo;
     }
 
     getFullName():string{
-        return `${this.cuit} -  ${this.apellido}, ${this.nombre}`;
+        return `${this.Apellido}, ${this.Nombre}`;
     }
 
     getEstado():string{

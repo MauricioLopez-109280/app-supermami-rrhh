@@ -1,257 +1,47 @@
 <div class="main-content" id="initPage">
     <div class="container-fluid">
         
+        <!-- <button (click)="cambiarEditMode()" > cambiar edit mode </button> -->
 
-            <button class="collapsible empleados"> 
-                Crear-Editar-Baja
-            </button>
-            <div class="content">
+        <button class="collapsible empleados"> 
+            Crear-Editar
+        </button>
+        <div class="content mb-2">
 
+            <app-formgenerico 
+                [fieldsForm]="fieldsForm"
+                [tituloCrear]="'Crear Empleados'"
+                [tituloEditar]="'Editar Empleados'"
+                [(isEditMode)]="isEditMode"
+                [objectoCrearEditar]="objectoCrearEditar"
+                (messageEventCrearEditar)="formgen_receiveMessageCrearEditar($event)"
+                (messageEventCancelar)="formgen_receiveMessageCancelar($event)"
+                (messageEventClickTitulo)="formgen_receiveMessageClickTitulo($event)"
+            >
+            </app-formgenerico>
 
-                <div class="row animate__animated animate__fadeIn" id="CrearEditarEmpleado" >
+        </div>
 
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header card-header-primary">
-                                <h4 class="card-title">
-                                    <i class="material-icons">add</i>
-                                    Crear Empleado
-                                </h4>
-                                <p class="card-category">Complete los datos</p>
-                            </div>
-                            <div class="card-body">
-        
-                                <form  (ngSubmit)="sendForm( f )" #f="ngForm" >
-        
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <mat-form-field class="example-full-width">
-                                                <input matInput placeholder="ID" disabled="disabled"
-                                                      [(ngModel)]="empleado.id" name="id"
-                                                >
-                                                <!-- <small class="form-text text-muted">autogenerado</small> -->
-                                              </mat-form-field>
-                                        </div>
-                                    </div>
-        
-                                    <div class="row">
-        
-                                        <div class="col-md-6">
-                                            <mat-form-field class="example-full-width">
-                                              <input matInput placeholder="Apellido" required
-                                                    [(ngModel)]="empleado.apellido" name="apellido" #txtApellido="ngModel"
-                                                    [class.is-invalid]="txtApellido.invalid && txtApellido.touched"
-                                              >
-                                            </mat-form-field>
-                                            <small *ngIf="txtApellido.invalid && txtApellido.touched" 
-                                                class="form-text text-danger animated fadeIn">
-                                                el apellido es requerido
-                                            </small>
-                                        </div>
-        
-                                        <div class="col-md-6">
-                                            <mat-form-field class="example-full-width">
-                                              <input matInput placeholder="Nombre" required
-                                                [(ngModel)]="empleado.nombre" name="nombre" #txtNombre="ngModel"
-                                                [class.is-invalid]="txtNombre.invalid && txtNombre.touched"
-                                              >
-                                            </mat-form-field>
-                                            <small *ngIf="txtNombre.invalid && txtNombre.touched" 
-                                                class="form-text text-danger animated fadeIn">
-                                                el nombre es requerido
-                                            </small>
-                                        </div>
-        
-                                    </div>
-                                    <div class="row">
-        
-                                        <div class="col-md-12">
-                                            <mat-form-field class="example-full-width">
-                                              <input matInput placeholder="Email" type="email"
-                                                [(ngModel)]="empleado.email" name="email" #txtEmail="ngModel"
-                                                [class.is-invalid]="txtEmail.invalid && txtEmail.touched"
-                                              >
-                                            </mat-form-field>
-                                            <small *ngIf="txtEmail.invalid && txtEmail.touched" 
-                                                class="form-text text-danger animated fadeIn">
-                                                el email es requerido
-                                            </small>
-                                        </div>
-        
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                          <mat-form-field class="example-full-width">
-                                            <input matInput placeholder="CUIT" type="text"
-                                                [(ngModel)]="empleado.legajo" name="legajo" #txtLegajo="ngModel"
-                                            >
-                                          </mat-form-field>
-                                        </div>
-                                        <div class="col-md-6">
-                                          <mat-form-field class="example-full-width">
-                                            <input matInput placeholder="Telefono" type="text">
-                                          </mat-form-field>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                          <mat-form-field class="example-full-width">
-                                            <input matInput placeholder="Domicilio" type="text">
-                                          </mat-form-field>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                          <mat-form-field class="example-full-width">
-                                            <input matInput placeholder="Titulo/Estudios" type="text">
-                                          </mat-form-field>
-                                        </div>
-                                        <div class="col-md-6">
-                                          <mat-form-field class="example-full-width">
-                                            <input matInput placeholder="Posicion" type="text">
-                                          </mat-form-field>
-                                        </div>
-                                    </div>
-        
-                                    <button mat-raised-button type="submit" class="btn btn-primary pull-right">
-                                        <i class="fa fa-save"></i>
-                                        Guardar
-                                    </button>
+        <button class="collapsible empleados"> 
+            Consultar
+        </button>
+        <div class="content">
 
-                                    <button mat-raised-button type="button" class="btn btn-secondary center" (click)="clean()">
-                                        <i class="fas fa-user-slash"></i>
-                                        Baja
-                                    </button>
+            <app-gridgral 
+                [idDivContenedor]="'ConsultarEmpleados'"
+                [tituloListado]="'Consultar Empleados'"
+                [listEncabezados]="listEncabezados"
+                [listObjetos]="listEmpleados"
+                (messageEventEdit)="gridgral_receiveMessageEdit($event)"
+                (messageEventBuscar)="gridgral_receiveMessageBuscar($event)"
+                (messageEventDelete)="gridgral_receiveMessageDelete($event)"
+                (messageEventCambiarEstado)="gridgral_receiveMessageCambiarEstado($event)"
+            >
+            </app-gridgral>
 
-                                    <button mat-raised-button type="button" class="btn btn-secondary pull-left" (click)="clean()">
-                                        <i class="fa fa-close"></i>
-                                        Cancelar
-                                    </button>
-        
-                                    <div class="clearfix"></div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                
-                </div>
-                
-            </div>
-
-
-            <button class="collapsible empleados">
-                Consultar
-            </button>
-            <div class="content">
-
-
-                <div class="row animate__animated animate__fadeIn " id="ConsultarEmpleado">
-        
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header card-header-primary">
-                                <h4 class="card-title ">
-                                    <i class="material-icons">library_books</i>
-                                    Listado de Empleados
-                                </h4>
-                                <p class="card-category">Nota: Los sujetos deben ser supervisados sino no trabajan</p>
-                            </div>
-        
-                            <form class="form-inline my-3 ml-3">
-                                <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
-                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="loadEmpleados()">
-                                    Buscar
-                                </button>
-                            </form>
-        
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-hover mt-3 animate__animated animate__fadeIn " *ngIf="!loading && listEmpleados.length>0">
-                                        <thead class=" text-primary">
-                                            <th> ID </th>
-                                            <th> Curso </th>
-                                            <th> Legajo </th>
-                                            <th> Apellido </th>
-                                            <th> Nombre </th>
-                                            <th> Email </th>
-                                            <th> Estado </th>
-                                            <th class="text-center"> Acciones </th>
-                                        </thead>
-                                        <tbody>
-        
-                                            <tr *ngFor="let empleado of listEmpleados; index as i">
-                                                <td> {{ empleado.id }} </td>
-                                                <!-- <td> {{ empleado.curso }} </td> -->
-                                                <td class="text-primary"> {{ empleado.legajo }} </td>
-                                                <td> {{ empleado.apellido }} </td>
-                                                <td> {{  empleado.nombre }} </td>
-                                                <td> {{  empleado.email }} </td>
-                                                <!-- <td> {{  empleado.getEstado() }} </td> -->
-        
-                                                <td>
-                                                    <button type="button" class="btn btn-outline-primary " 
-                                                        [class.btn-outline-success]="empleado.activo"
-                                                        [class.btn-outline-danger]="!empleado.activo"
-                                                        (click)="cambiarEstadoEmpleado(empleado , i)"
-                                                    >
-                                                        <div *ngIf="empleado.activo">
-                                                            <i class="fa fa-arrow-up"></i>
-                                                            alta
-                                                        </div>
-                                                        <div *ngIf="!empleado.activo">
-                                                            <i class="fa fa-arrow-down"></i>
-                                                            baja
-                                                        </div>
-                                                    </button>
-                                                </td>
-        
-                                                <td class="text-center">
-                                                    <button type="button" class="btn btn-outline-warning  mr-3 "
-                                                    (click)="editarEmpleado(empleado , i)"
-                                                    >
-                                                        <i class="fa fa-edit"></i>
-                                                        edit
-                                                    </button>
-        
-                                                </td>
-        
-                                            </tr>
-        
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        
-        
-                            <div class="animate__animated animate__fadeIn animate__faster">
-                                <div class="alert alert-primary text-center mt-3  "  *ngIf="loading">
-                                    <h5 class="alert-heading">loading...</h5>
-                                    <i class="fa fa-sync fa-spin fa-2x"></i>
-                                    <p class="mb-0">
-                                        please wait
-                                    </p>
-                                </div>
-                                
-                                <div class="alert alert-warning text-center mt-3 " 
-                                    *ngIf="!loading && listEmpleados.length===0">
-                                    <h5 class="alert-heading">no records</h5>
-                                    <i class="fa fa-exclamation fa-2x"></i>
-                                </div>
-                            </div>
-        
-        
-                        </div>
-                    </div>
-        
-                </div>
-
-            </div>
-
+        </div>
 
 
 
     </div>
 </div>
-  
-
-

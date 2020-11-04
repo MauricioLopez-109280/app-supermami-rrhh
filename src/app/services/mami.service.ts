@@ -83,7 +83,7 @@ export class MamiService {
         let message = empleado.activo ? 'dar de BAJA' : 'dar de ALTA';
 
         return Swal.fire({
-            title: empleado.nombre,
+            title: empleado.Nombre,
             text: `Esta seguro que desea ${message} al empleado ?`,
             icon: empleado.activo ? 'error' : 'warning',
             showConfirmButton: true,
